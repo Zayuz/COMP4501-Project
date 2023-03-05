@@ -19,6 +19,11 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CameraSpeed = 20;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            CameraSpeed = 50;
+        }
         if(Input.mousePosition.y >= Screen.height * topBarrier || Input.GetKey(KeyCode.W))
         {
             this.transform.Translate(Vector3.back * Time.deltaTime * CameraSpeed, Space.World);
