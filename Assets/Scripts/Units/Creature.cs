@@ -27,7 +27,7 @@ public class Creature : Unit
     {
         if (Input.GetMouseButtonDown(1) && selected) {
             GameObject dest = getClickedObject(out RaycastHit hit);
-            destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            destination = new Vector3(hit.point.x, hit.point.y+0.5f, hit.point.z);
            
         }
 
@@ -68,7 +68,7 @@ public class Creature : Unit
     {
         GameObject target = null;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
+        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit, groundLayer))
         {
             target = hit.collider.gameObject;
         }
