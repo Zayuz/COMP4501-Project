@@ -8,7 +8,26 @@ public class Unit : MonoBehaviour
     public int health;
     public enum teams { neutral, allied, enemy} // team tag
     public teams team;
+    public Outline outline;
 
+    public Outline GetOutline() { return outline; }
+
+    public void AssignTeamOutline()
+    {
+        outline.enabled = false;
+        if (team == teams.neutral)
+        {
+            outline.OutlineColor = Color.yellow;
+        }
+        else if (team == teams.allied)
+        {
+            outline.OutlineColor = Color.blue;
+        }
+        else if (team == teams.enemy)
+        {
+            outline.OutlineColor = Color.red;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

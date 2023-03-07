@@ -772,12 +772,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 427641740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e6b863c91a93748b6d5093784878c6, type: 3}
+  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 427641742}
   health: 0
   team: 1
+  outline: {fileID: 427641747}
   attackSpeed: 0
   attackDamage: 0
   range: 0
@@ -818,6 +819,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &427641747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427641740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &478968552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2128,12 +2147,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 996975690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e6b863c91a93748b6d5093784878c6, type: 3}
+  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 996975692}
   health: 0
   team: 1
+  outline: {fileID: 996975695}
   attackSpeed: 0
   attackDamage: 0
   range: 0
@@ -2174,6 +2194,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &996975695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996975690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &1000435577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}

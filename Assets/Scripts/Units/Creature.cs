@@ -19,7 +19,7 @@ public class Creature : Unit
     // Start is called before the first frame update
     void Start()
     {
-        
+        AssignTeamOutline();
     }
 
     // Update is called once per frame
@@ -28,7 +28,6 @@ public class Creature : Unit
         if (Input.GetMouseButtonDown(1) && selected) {
             GameObject dest = getClickedObject(out RaycastHit hit);
             destination = new Vector3(hit.point.x, hit.point.y+0.5f, hit.point.z);
-           
         }
 
         Vector3 unitDirection = (destination - transform.position);
@@ -40,14 +39,16 @@ public class Creature : Unit
     }
 
     private void OnMouseDown() { // add way to multi select and de-select
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) && selected == true)
         {
             selected = false;
             Debug.Log("De-selected");
+            GetOutline().enabled = false;
         }
-        else {
+        else if (selected == false) {
             selected = true;
             Debug.Log("Selected");
+            GetOutline().enabled = true;
         }
     }
     /*
