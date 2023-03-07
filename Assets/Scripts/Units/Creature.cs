@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Creature : Unit
@@ -10,6 +11,8 @@ public class Creature : Unit
     public int moveSpeed;
     public int defense;
     public bool selected;
+
+    public Vector3 destination;
 
     public LayerMask groundLayer;
 
@@ -24,9 +27,16 @@ public class Creature : Unit
     {
         if (Input.GetMouseButtonDown(1) && selected) {
             GameObject dest = getClickedObject(out RaycastHit hit);
-            transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-            Debug.Log(transform.position);
+            destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+           
         }
+
+        Vector3 unitDirection = (destination - transform.position);
+        unitDirection = unitDirection.normalized;
+
+        transform.position = transform.position + (unitDirection * moveSpeed) * Time.deltaTime;
+        //transform.position = destination;
+        // Debug.Log(transform.position);
     }
 
     private void OnMouseDown() { // add way to multi select and de-select
@@ -47,6 +57,12 @@ public class Creature : Unit
 
         return mouseWorldPos;
     }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        destination = transform.position;
+        Debug.Log("COLLISION");
+    }
 
     GameObject getClickedObject(out RaycastHit hit)
     {
