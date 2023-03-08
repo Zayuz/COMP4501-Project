@@ -25,7 +25,7 @@ public class Unit : Interactable
         if (Input.GetMouseButtonDown(1) && selected) 
         {
             GameObject dest = getClickedObject(out RaycastHit hit);
-            destination = new Vector3(hit.point.x, hit.point.y+0.5f, hit.point.z);
+            destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
         }
 
         Vector3 unitDirection = (destination - transform.position);
