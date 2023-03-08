@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,7 +13,7 @@ public class Unit : Interactable
     public int defense;
     public Vector3 destination;
     public LayerMask groundLayer;
-
+    public Unit clickedUnit;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,21 @@ public class Unit : Interactable
         {
             GameObject dest = getClickedObject(out RaycastHit hit);
             destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            if (dest) { // null reference check
+                
+                clickedUnit = dest.GetComponent<Unit>();
+                if (clickedUnit != null && clickedUnit.team != teams.allied && clickedUnit.maxHealth != 0)
+                { // attack
+                    float targetDist = (float)Math.Sqrt((float)Math.Pow(hit.point.x - transform.position.x, 2) + (float)Math.Pow(hit.point.y - transform.position.y, 2)); // distance calc
+                    Debug.Log(targetDist);
+                    if (targetDist <= range)
+                    {
+                        destination = transform.position; // stop to attack
+                        clickedUnit.currentHealth -= attackDamage;
+                        Debug.Log("Attack Made");
+                    }
+                }
+            }
             
         }
 
@@ -37,6 +53,9 @@ public class Unit : Interactable
         unitDirection = unitDirection.normalized;
 
         transform.position = transform.position + (unitDirection * moveSpeed) * Time.deltaTime;
+        if (Vector3.Distance(transform.position, destination) < 0.1f) { // stop vibrating position if close enough
+            destination = transform.position;
+        }
     }
 
     private void OnMouseDown() // add way to multi select and de-select

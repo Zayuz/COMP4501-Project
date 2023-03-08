@@ -1291,6 +1291,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  clickedUnit: {fileID: 0}
 --- !u!64 &427641742
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2963,6 +2964,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  clickedUnit: {fileID: 0}
 --- !u!4 &908703832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
@@ -3507,14 +3509,15 @@ MonoBehaviour:
   team: 1
   outline: {fileID: 996975695}
   attackSpeed: 0
-  attackDamage: 0
-  range: 0
+  attackDamage: 20
+  range: 35
   moveSpeed: 10
   defense: 0
   destination: {x: 0, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  clickedUnit: {fileID: 0}
 --- !u!64 &996975692
 MeshCollider:
   m_ObjectHideFlags: 0
