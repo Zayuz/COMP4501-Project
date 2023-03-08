@@ -53,7 +53,7 @@ public class Interactable : MonoBehaviour
     {
         if (!selected)
         {
-            GetOutline().OutlineColor = Color.white;
+            AssignTeamOutline();
             GetOutline().enabled = true;
         }
     }

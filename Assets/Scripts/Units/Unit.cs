@@ -43,7 +43,7 @@ public class Unit : Interactable
         }
         else if (selected == false) 
         {
-            AssignTeamOutline();
+            GetOutline().OutlineColor = Color.white;
             selected = true;
             GetOutline().enabled = true;
         }
