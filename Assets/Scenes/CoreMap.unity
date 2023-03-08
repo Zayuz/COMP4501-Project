@@ -1212,15 +1212,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf4b57564025da84fbec864f169020a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.28
+      value: 73.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf4b57564025da84fbec864f169020a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.81
+      value: 12.81
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf4b57564025da84fbec864f169020a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.64
+      value: -0.79999924
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf4b57564025da84fbec864f169020a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1278,8 +1278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 427641742}
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 100
+  currentHealth: 100
   team: 1
   outline: {fileID: 427641747}
   attackSpeed: 0
@@ -2946,9 +2946,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 902065600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myMeshCollider: {fileID: 902065603}
+  maxHealth: 100
+  currentHealth: 100
+  team: 0
+  outline: {fileID: 902065604}
+  attackSpeed: 0
+  attackDamage: 0
+  range: 0
+  moveSpeed: 0
+  defense: 0
+  destination: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &908703832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
@@ -3484,9 +3498,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 996975690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myMeshCollider: {fileID: 996975692}
+  maxHealth: 100
+  currentHealth: 100
+  team: 1
+  outline: {fileID: 996975695}
+  attackSpeed: 0
+  attackDamage: 0
+  range: 0
+  moveSpeed: 10
+  defense: 0
+  destination: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!64 &996975692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5657,7 +5685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.86359
+      value: 43.04
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5665,7 +5693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.777906
+      value: -25.76
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalRotation.w

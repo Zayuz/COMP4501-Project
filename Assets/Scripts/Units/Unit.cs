@@ -16,16 +16,21 @@ public class Unit : Interactable
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth <= 0 && maxHealth >= 0) {
+            Destroy(gameObject);
+            return;
+        }
         if (Input.GetMouseButtonDown(1) && selected) 
         {
             GameObject dest = getClickedObject(out RaycastHit hit);
             destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            
         }
 
         Vector3 unitDirection = (destination - transform.position);
@@ -41,7 +46,7 @@ public class Unit : Interactable
             selected = false;
             GetOutline().enabled = false;
         }
-        else if (selected == false) 
+        else if (selected == false && team == teams.allied) 
         {
             GetOutline().OutlineColor = Color.white;
             selected = true;
