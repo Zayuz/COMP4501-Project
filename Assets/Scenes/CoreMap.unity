@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13040191, g: 0.09601602, b: 0.061815564, a: 1}
+  m_IndirectSpecularColor: {r: 0.13040014, g: 0.09601523, b: 0.06181486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3484,6 +3484,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
 --- !u!1 &996975690 stripped
@@ -3662,9 +3666,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1026347923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myMeshCollider: {fileID: 1026347930}
+  maxHealth: 1000
+  currentHealth: 1000
+  team: 2
+  outline: {fileID: 1026347929}
+  attackSpeed: 0
+  attackDamage: 0
+  range: 0
+  moveSpeed: 0
+  defense: 0
+  destination: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  clickedUnit: {fileID: 0}
 --- !u!114 &1026347929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3683,6 +3702,11 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!64 &1026347930 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 6601886996393371248, guid: 88f2fd29f58b9734683512546acec310, type: 3}
+  m_PrefabInstance: {fileID: 1371160881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1038415404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3770,9 +3794,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1046186829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myMeshCollider: {fileID: 1046186836}
+  maxHealth: 1000
+  currentHealth: 1000
+  team: 1
+  outline: {fileID: 1046186835}
+  attackSpeed: 0
+  attackDamage: 0
+  range: 0
+  moveSpeed: 0
+  defense: 0
+  destination: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  clickedUnit: {fileID: 0}
 --- !u!114 &1046186835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3791,6 +3830,11 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!64 &1046186836 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 6601886996393371248, guid: 88f2fd29f58b9734683512546acec310, type: 3}
+  m_PrefabInstance: {fileID: 252140151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1113627518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1686021177305034388, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
