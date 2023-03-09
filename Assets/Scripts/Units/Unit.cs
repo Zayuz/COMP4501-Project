@@ -6,18 +6,25 @@ using UnityEngine;
 
 public class Unit : Interactable
 {
+    [Header("Unit Settings")]
     public float attackSpeed;
     public float attackDamage;
     public int range;
     public int moveSpeed;
     public int defense;
-    public Vector3 destination;
     public LayerMask groundLayer;
-    public Unit clickedUnit;
+    
+    private Vector3 destination;
+    private Unit clickedUnit;
+    private Item clickedItem;
+    private int potions;
+    private int summoningPoints;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        potions = 0;
+        summoningPoints = 0;
     }
 
     // Update is called once per frame
@@ -27,26 +34,58 @@ public class Unit : Interactable
             Destroy(gameObject);
             return;
         }
+
         if (Input.GetMouseButtonDown(1) && selected) 
         {
             GameObject dest = getClickedObject(out RaycastHit hit);
             destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            if (dest) { // null reference check
-                
+
+            if (dest != null)
+            { // check if item or unit clicked on
                 clickedUnit = dest.GetComponent<Unit>();
-                if (clickedUnit != null && clickedUnit.team != teams.allied && clickedUnit.maxHealth != 0)
-                { // attack
-                    float targetDist = (float)Math.Sqrt((float)Math.Pow(hit.point.x - transform.position.x, 2) + (float)Math.Pow(hit.point.y - transform.position.y, 2)); // distance calc
-                    Debug.Log(targetDist);
-                    if (targetDist <= range)
-                    {
-                        destination = transform.position; // stop to attack
-                        clickedUnit.currentHealth -= attackDamage;
-                        Debug.Log("Attack Made");
-                    }
-                }
+                clickedItem = dest.GetComponent<Item>();
             }
-            
+            else
+            { // destination is null so no unit or item could be clicked on
+                clickedUnit = null;
+                clickedItem = null;
+            }
+        }
+
+        if (clickedUnit != null && clickedUnit.team != teams.allied && clickedUnit.maxHealth != 0)
+        { // walk towards target to attack until in range
+            float targetDist = (float)Math.Sqrt((float)Math.Pow(clickedUnit.transform.position.x - transform.position.x, 2) + (float)Math.Pow(clickedUnit.transform.position.z - transform.position.z, 2));
+
+            if (targetDist <= range)
+            {
+                destination = transform.position; // stop to attack
+                clickedUnit.currentHealth -= attackDamage;
+                Debug.Log("Attack Made");
+                clickedUnit = null;
+            }
+        }
+        else if (clickedItem != null)
+        { // walk towards target to pick up until in range
+            float targetDist = (float)Math.Sqrt((float)Math.Pow(clickedItem.transform.position.x - transform.position.x, 2) + (float)Math.Pow(clickedItem.transform.position.z - transform.position.z, 2));
+
+            if (targetDist <= 12)
+            {
+                destination = transform.position;
+                Item.ItemType i = clickedItem.PickedUp();
+
+                if (i == Item.ItemType.Potion)
+                {
+                    potions++;
+                    Debug.Log("Potions: " + potions);
+                }
+                else if (i == Item.ItemType.Crystal)
+                {
+                    summoningPoints++;
+                    Debug.Log("Summoning Points: " + summoningPoints);
+                }
+
+                clickedItem = null;
+            }
         }
 
         Vector3 unitDirection = (destination - transform.position);
@@ -76,7 +115,6 @@ public class Unit : Interactable
     private void OnTriggerEnter(Collider other)
     {
         destination = transform.position;
-        Debug.Log("COLLISION");
     }
 
     GameObject getClickedObject(out RaycastHit hit)

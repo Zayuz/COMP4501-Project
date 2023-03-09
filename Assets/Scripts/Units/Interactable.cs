@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public MeshCollider myMeshCollider;
+    public enum teams { 
+        neutral, 
+        allied, 
+        enemy 
+    } // team tag
+
+    [Header("Interactable Settings")]
     public float maxHealth;
-    public float currentHealth;
-    public enum teams { neutral, allied, enemy } // team tag
     public teams team;
     public Outline outline;
 
     protected bool selected;
+    protected float currentHealth;
+    protected MeshCollider myMeshCollider;
 
     void Awake()
     {
+        currentHealth = maxHealth;
+        myMeshCollider = gameObject.GetComponent<MeshCollider>();
         GetOutline().enabled = false;
     }
     
