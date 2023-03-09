@@ -5,7 +5,8 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public MeshCollider myMeshCollider;
-    public int health;
+    public float maxHealth;
+    public float currentHealth;
     public enum teams { neutral, allied, enemy } // team tag
     public teams team;
     public Outline outline;

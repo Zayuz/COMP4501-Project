@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13040014, g: 0.09601523, b: 0.06181486, a: 1}
+  m_IndirectSpecularColor: {r: 0.13040191, g: 0.09601602, b: 0.061815564, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 38706650}
-  health: 0
+  maxHealth: 0
+  currentHealth: 0
   team: 0
   outline: {fileID: 38706649}
 --- !u!1001 &42413198
@@ -1273,11 +1274,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 427641740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 427641742}
-  health: 0
+  maxHealth: 100
+  currentHealth: 100
   team: 1
   outline: {fileID: 427641747}
   attackSpeed: 0
@@ -1289,6 +1291,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  clickedUnit: {fileID: 0}
 --- !u!64 &427641742
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1355,7 +1358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 477912498}
-  health: 0
+  maxHealth: 0
+  currentHealth: 0
   team: 0
   outline: {fileID: 477912499}
 --- !u!64 &477912498
@@ -2263,7 +2267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 724449402}
-  health: 0
+  maxHealth: 0
+  currentHealth: 0
   team: 0
   outline: {fileID: 724449403}
 --- !u!64 &724449402
@@ -2371,6 +2376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
+--- !u!1 &752044806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
+  m_PrefabInstance: {fileID: 2039213874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &785441854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2937,11 +2947,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 902065600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 902065603}
-  health: 0
+  maxHealth: 100
+  currentHealth: 100
   team: 0
   outline: {fileID: 902065604}
   attackSpeed: 0
@@ -2952,7 +2963,8 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  clickedUnit: {fileID: 0}
 --- !u!4 &908703832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
@@ -3488,22 +3500,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 996975690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 996975692}
-  health: 0
+  maxHealth: 100
+  currentHealth: 100
   team: 1
   outline: {fileID: 996975695}
   attackSpeed: 0
-  attackDamage: 0
-  range: 0
-  moveSpeed: 5
+  attackDamage: 20
+  range: 35
+  moveSpeed: 10
   defense: 0
   destination: {x: 0, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  clickedUnit: {fileID: 0}
 --- !u!64 &996975692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3639,11 +3653,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
   m_PrefabInstance: {fileID: 1371160881}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1026347924 stripped
-MeshCollider:
-  m_CorrespondingSourceObject: {fileID: 6601886996393371248, guid: 88f2fd29f58b9734683512546acec310, type: 3}
-  m_PrefabInstance: {fileID: 1371160881}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1026347928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3656,19 +3665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMeshCollider: {fileID: 1026347924}
-  health: 0
-  team: 2
-  outline: {fileID: 1026347929}
-  attackSpeed: 0
-  attackDamage: 0
-  range: 0
-  moveSpeed: 0
-  defense: 0
-  destination: {x: 0, y: 0, z: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1026347929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3765,11 +3761,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
   m_PrefabInstance: {fileID: 252140151}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1046186830 stripped
-MeshCollider:
-  m_CorrespondingSourceObject: {fileID: 6601886996393371248, guid: 88f2fd29f58b9734683512546acec310, type: 3}
-  m_PrefabInstance: {fileID: 252140151}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1046186834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3782,19 +3773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb38d4d9f09d4f4ab88603a116e92a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMeshCollider: {fileID: 1046186830}
-  health: 0
-  team: 1
-  outline: {fileID: 1046186835}
-  attackSpeed: 0
-  attackDamage: 0
-  range: 0
-  moveSpeed: 0
-  defense: 0
-  destination: {x: 0, y: 0, z: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1046186835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4006,7 +3984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMeshCollider: {fileID: 1201122954}
-  health: 0
+  maxHealth: 0
+  currentHealth: 0
   team: 0
   outline: {fileID: 1201122956}
 --- !u!114 &1201122956
@@ -5709,7 +5688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.86359
+      value: 43.04
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5717,7 +5696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.777906
+      value: -25.76
       objectReference: {fileID: 0}
     - target: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6149,6 +6128,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
   m_PrefabInstance: {fileID: 2039213874}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &2085463277
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752044806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 661464e19c087564badb2bf5230c842c, type: 3}
 --- !u!4 &2093191940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1279437348525638701, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
