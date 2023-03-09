@@ -68,7 +68,7 @@ public class Unit : Interactable
         { // walk towards target to pick up until in range
             float targetDist = (float)Math.Sqrt((float)Math.Pow(clickedItem.transform.position.x - transform.position.x, 2) + (float)Math.Pow(clickedItem.transform.position.z - transform.position.z, 2));
 
-            if (targetDist <= 12)
+            if (targetDist <= 10)
             {
                 destination = transform.position;
                 Item.ItemType i = clickedItem.PickedUp();

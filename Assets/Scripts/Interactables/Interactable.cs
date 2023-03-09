@@ -17,12 +17,10 @@ public class Interactable : MonoBehaviour
 
     protected bool selected;
     protected float currentHealth;
-    protected MeshCollider myMeshCollider;
 
     void Awake()
     {
         currentHealth = maxHealth;
-        myMeshCollider = gameObject.GetComponent<MeshCollider>();
         GetOutline().enabled = false;
     }
     

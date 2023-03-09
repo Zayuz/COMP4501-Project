@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemRespawner : MonoBehaviour
 {
-    public float timer; // respawn timer
-    public GameObject targetObject;
+    private float timer; // respawn timer
+    private GameObject targetObject;
 
     // Start is called before the first frame update
     void Start()
