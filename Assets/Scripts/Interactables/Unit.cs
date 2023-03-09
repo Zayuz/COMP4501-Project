@@ -21,14 +21,14 @@ public class Unit : Interactable
     private int summoningPoints;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         potions = 0;
         summoningPoints = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (currentHealth <= 0 && maxHealth >= 0) {
             Destroy(gameObject);
@@ -59,7 +59,7 @@ public class Unit : Interactable
             if (targetDist <= range)
             {
                 destination = transform.position; // stop to attack
-                clickedUnit.currentHealth -= attackDamage;
+                clickedUnit.TakeDamage(attackDamage);
                 Debug.Log("Attack Made");
                 clickedUnit = null;
             }
@@ -92,7 +92,8 @@ public class Unit : Interactable
         unitDirection = unitDirection.normalized;
 
         transform.position = transform.position + (unitDirection * moveSpeed) * Time.deltaTime;
-        if (Vector3.Distance(transform.position, destination) < 0.1f) { // stop vibrating position if close enough
+        if (Vector3.Distance(transform.position, destination) < 0.1f) 
+        { // stop vibrating position if close enough
             destination = transform.position;
         }
     }
@@ -128,5 +129,11 @@ public class Unit : Interactable
         }
 
         return target;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Health: " + currentHealth);
     }
 }
