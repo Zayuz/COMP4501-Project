@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13040014, g: 0.096015215, b: 0.06181486, a: 1}
+  m_IndirectSpecularColor: {r: 0.13040014, g: 0.09601523, b: 0.06181486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -605,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
       propertyPath: m_NavMeshLayer
@@ -920,9 +920,9 @@ GameObject:
   - component: {fileID: 327571913}
   - component: {fileID: 327571914}
   - component: {fileID: 327571917}
-  - component: {fileID: 327571916}
   - component: {fileID: 327571915}
   - component: {fileID: 327571918}
+  - component: {fileID: 327571919}
   m_Layer: 8
   m_Name: Deer Druid
   m_TagString: Unit
@@ -982,29 +982,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3746554548866410089, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
---- !u!114 &327571916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327571912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  team: 1
-  outline: {fileID: 327571917}
-  attackSpeed: 1
-  attackDamage: 20
-  range: 20
-  moveSpeed: 120
-  defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &327571917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,6 +1016,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &327571919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327571912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a057d15c2901a541b92effeed87744b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  team: 1
+  outline: {fileID: 327571917}
+  attackSpeed: 1
+  attackDamage: 20
+  range: 20
+  defense: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 10
 --- !u!1001 &338822966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1422,6 +1422,10 @@ PrefabInstance:
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_Name
       value: Ground_02 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
@@ -1912,9 +1916,9 @@ GameObject:
   m_Component:
   - component: {fileID: 601983455}
   - component: {fileID: 601983456}
-  - component: {fileID: 601983460}
   - component: {fileID: 601983459}
   - component: {fileID: 601983462}
+  - component: {fileID: 601983463}
   m_Layer: 8
   m_Name: Armadillo
   m_TagString: Unit
@@ -1978,29 +1982,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &601983460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601983454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  team: 1
-  outline: {fileID: 601983459}
-  attackSpeed: 1
-  attackDamage: 20
-  range: 10
-  moveSpeed: 10
-  defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!65 &601983462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2014,6 +1995,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 10}
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &601983463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601983454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a057d15c2901a541b92effeed87744b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  team: 1
+  outline: {fileID: 601983459}
+  attackSpeed: 1
+  attackDamage: 20
+  range: 10
+  defense: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 10
 --- !u!1001 &603769671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3257,7 +3261,6 @@ MonoBehaviour:
   attackSpeed: 0
   attackDamage: 0
   range: 0
-  moveSpeed: 0
   defense: 0
   groundLayer:
     serializedVersion: 2
@@ -4042,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1438169871030806, guid: c9bc790a133e19c40b64d6db4cfb7a22, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4168634819871070, guid: c9bc790a133e19c40b64d6db4cfb7a22, type: 3}
       propertyPath: m_RootOrder
@@ -4156,7 +4159,6 @@ MonoBehaviour:
   attackSpeed: 0
   attackDamage: 0
   range: 0
-  moveSpeed: 0
   defense: 0
   groundLayer:
     serializedVersion: 2
@@ -4263,6 +4265,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2222111361405018444, guid: 88f2fd29f58b9734683512546acec310, type: 3}
   m_PrefabInstance: {fileID: 252140151}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1046186843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046186829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e0ed48a1af3954fa56542fc6b2e149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  team: 1
+  outline: {fileID: 1046186835}
+  attackSpeed: 1
+  attackDamage: 10
+  range: 10
+  defense: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  structureType: 0
 --- !u!1 &1046507004
 GameObject:
   m_ObjectHideFlags: 0
@@ -4907,7 +4932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
       propertyPath: m_NavMeshLayer
@@ -5444,10 +5469,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1596364063}
   - component: {fileID: 1596364064}
-  - component: {fileID: 1596364065}
   - component: {fileID: 1596364067}
   - component: {fileID: 1596364066}
   - component: {fileID: 1596364069}
+  - component: {fileID: 1596364070}
   m_Layer: 8
   m_Name: Cat Mage
   m_TagString: Unit
@@ -5493,29 +5518,6 @@ NavMeshAgent:
   m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1596364065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596364062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29d57f0ae8657c42b03057ed4880345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  team: 1
-  outline: {fileID: 1596364069}
-  attackSpeed: 1
-  attackDamage: 20
-  range: 20
-  moveSpeed: 120
-  defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!54 &1596364066
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5564,6 +5566,29 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1596364070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596364062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a057d15c2901a541b92effeed87744b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  team: 1
+  outline: {fileID: 1596364069}
+  attackSpeed: 1
+  attackDamage: 10
+  range: 10
+  defense: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 10
 --- !u!1001 &1602887813
 PrefabInstance:
   m_ObjectHideFlags: 0

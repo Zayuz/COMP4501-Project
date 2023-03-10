@@ -7,40 +7,30 @@ using UnityEngine;
 public class Unit : Interactable
 {
     [Header("Unit Settings")]
-    public float attackSpeed;
+    public float attackSpeed; // in seconds
     public float attackDamage;
     public int range;
-    public int moveSpeed;
     public int defense;
     public LayerMask groundLayer;
 
-    private Vector3 destination;
-    private Unit clickedUnit;
-    private UnityEngine.AI.NavMeshAgent navMeshAgent;
-    private Item clickedItem;
-    private int potions;
-    private int summoningPoints;
+    protected Vector3 destination;
+    protected Unit clickedUnit;
+    protected Item clickedItem;
+    protected float attackTimer;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        potions = 0;
-        summoningPoints = 0;
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        navMeshAgent.angularSpeed = moveSpeed;
-        destination = transform.position;
+
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (currentHealth <= 0 && maxHealth >= 0) {
-            Destroy(gameObject);
-            return;
-        }
+        attackTimer += Time.deltaTime; // time since last attack (for tracking cooldown)
 
-        if (Input.GetMouseButtonDown(1) && selected)
-        {
+        if (Input.GetMouseButtonDown(1) && selected && (team == teams.allied))
+        { // only allow commanding allied units
             GameObject dest = getClickedObject(out RaycastHit hit);
             destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 
@@ -56,51 +46,10 @@ public class Unit : Interactable
             }
         }
 
-        if (clickedUnit != null && clickedUnit.team != teams.allied && clickedUnit.maxHealth != 0)
-        { // walk towards target to attack until in range
-            float targetDist = (float)Math.Sqrt((float)Math.Pow(clickedUnit.transform.position.x - transform.position.x, 2) + (float)Math.Pow(clickedUnit.transform.position.z - transform.position.z, 2));
-
-            if (targetDist <= range)
-            {
-                destination = transform.position; // stop to attack
-                clickedUnit.TakeDamage(attackDamage);
-                Debug.Log("Attack Made");
-                clickedUnit = null;
-            }
+        if (clickedUnit != null)
+        {
+            AttackTarget();
         }
-        else if (clickedItem != null)
-        { // walk towards target to pick up until in range
-            float targetDist = (float)Math.Sqrt((float)Math.Pow(clickedItem.transform.position.x - transform.position.x, 2) + (float)Math.Pow(clickedItem.transform.position.z - transform.position.z, 2));
-
-            if (targetDist <= 10)
-            {
-                destination = transform.position;
-                Item.ItemType i = clickedItem.PickedUp();
-
-                if (i == Item.ItemType.Potion)
-                {
-                    potions++;
-                    Debug.Log("Potions: " + potions);
-                }
-                else if (i == Item.ItemType.Crystal)
-                {
-                    summoningPoints++;
-                    Debug.Log("Summoning Points: " + summoningPoints);
-                }
-
-                clickedItem = null;
-            }
-        }
-
-        /*Vector3 unitDirection = (destination - transform.position);
-        unitDirection = unitDirection.normalized;
-
-        transform.position = transform.position + (unitDirection * moveSpeed) * Time.deltaTime;
-        if (Vector3.Distance(transform.position, destination) < 0.1f) 
-        { // stop vibrating position if close enough
-            destination = transform.position;
-        }*/
-        navMeshAgent.destination = destination;
     }
 
     public void Select()
@@ -114,11 +63,6 @@ public class Unit : Interactable
     {
         selected = false;
         GetOutline().enabled = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //destination = transform.position;
     }
 
     GameObject getClickedObject(out RaycastHit hit)
@@ -137,6 +81,33 @@ public class Unit : Interactable
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        if (currentHealth <= 0 && maxHealth >= 0) {
+            Destroy(gameObject);
+            return;
+        }
+
         Debug.Log("Health: " + currentHealth);
+    }
+
+    protected void AttackTarget()
+    {
+        if (clickedUnit.team != this.team && clickedUnit.maxHealth != 0)
+        { // walk towards target to attack until in range
+            float targetDist = Mathf.Sqrt(Mathf.Pow(clickedUnit.transform.position.x - transform.position.x, 2) + Mathf.Pow(clickedUnit.transform.position.z - transform.position.z, 2));
+
+            if ((targetDist <= range) && (attackTimer >= attackSpeed))
+            {
+                destination = transform.position; // stop moving to attack
+                clickedUnit.TakeDamage(attackDamage);
+                attackTimer = 0; // reset attack timer
+            }
+            // we don't set clickedUnit to null so unit continues attacking unless commanded elsewhere
+        }
+
+        if (clickedUnit == null) // check if object is destroyed
+        {
+            clickedUnit = null; // object needs to be manually set to null since it is not null when destroyed (weird I know)
+        }
     }
 }

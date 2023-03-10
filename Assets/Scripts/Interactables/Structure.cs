@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,14 +13,14 @@ public class Structure : Unit
     [Header("Structure Settings")]
     public StructureType structureType;
 
-    private float timer;
+    private float regenTimer;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
 
-        timer = 0f;
+        regenTimer = 0f;
     }
 
     // Update is called once per frame
@@ -27,13 +28,13 @@ public class Structure : Unit
     {
         base.Update();
 
-        timer += Time.deltaTime;
+        regenTimer -= Time.deltaTime;
 
-        if (timer >= 2.5f) // regenerate hp every 2.5 seconds
+        if (regenTimer <= 0f)
         {
             currentHealth += 10;
             currentHealth = (currentHealth > maxHealth) ? maxHealth : currentHealth;
-            timer = 0f;
+            regenTimer = 2.5f; // regenerate hp every 2.5 seconds
         }
     }
 }

@@ -19,13 +19,11 @@ public class ItemRespawner : MonoBehaviour
         if (timer <= 0f)
         {
             targetObject.SetActive(true);
-            Debug.Log("respawned");
             this.enabled = false;
         }
         else
         {
             timer -= Time.deltaTime;
-            Debug.Log("Timer: " + timer);
         }
     }
 
