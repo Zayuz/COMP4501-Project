@@ -13,9 +13,10 @@ public class Unit : Interactable
     public int moveSpeed;
     public int defense;
     public LayerMask groundLayer;
-    
+
     private Vector3 destination;
     private Unit clickedUnit;
+    private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private Item clickedItem;
     private int potions;
     private int summoningPoints;
@@ -25,6 +26,9 @@ public class Unit : Interactable
     {
         potions = 0;
         summoningPoints = 0;
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.angularSpeed = moveSpeed;
+        destination = transform.position;
     }
 
     // Update is called once per frame
@@ -35,10 +39,10 @@ public class Unit : Interactable
             return;
         }
 
-        if (Input.GetMouseButtonDown(1) && selected) 
+        if (Input.GetMouseButtonDown(1) && selected)
         {
             GameObject dest = getClickedObject(out RaycastHit hit);
-            destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 
             if (dest != null)
             { // check if item or unit clicked on
@@ -88,33 +92,32 @@ public class Unit : Interactable
             }
         }
 
-        Vector3 unitDirection = (destination - transform.position);
+        /*Vector3 unitDirection = (destination - transform.position);
         unitDirection = unitDirection.normalized;
 
         transform.position = transform.position + (unitDirection * moveSpeed) * Time.deltaTime;
         if (Vector3.Distance(transform.position, destination) < 0.1f) { // stop vibrating position if close enough
             destination = transform.position;
-        }
+        }*/
+        navMeshAgent.destination = destination;
     }
 
-    private void OnMouseDown() // add way to multi select and de-select
-    { 
-        if (Input.GetKey(KeyCode.LeftControl) && selected == true)
-        {
-            selected = false;
-            GetOutline().enabled = false;
-        }
-        else if (selected == false && team == teams.allied) 
-        {
-            GetOutline().OutlineColor = Color.white;
-            selected = true;
-            GetOutline().enabled = true;
-        }
+    public void Select()
+    {
+        GetOutline().OutlineColor = Color.white;
+        selected = true;
+        GetOutline().enabled = true;
+    }
+
+    public void Deselect()
+    {
+        selected = false;
+        GetOutline().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        destination = transform.position;
+        //destination = transform.position;
     }
 
     GameObject getClickedObject(out RaycastHit hit)
