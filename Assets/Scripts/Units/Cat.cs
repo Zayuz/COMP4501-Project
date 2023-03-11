@@ -19,7 +19,7 @@ public class Cat : Hero
                 destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 
                 transform.position = destination;
-                DamageNum.Create(transform.position, "BAMF!", DamageNum.colors.pink);
+                DamageNum.Create(transform.position, "BAMF!", DamageNum.colors.pink); // teleport sound effect / indicator
                 qTimer = 0;
                 destination = transform.position;
             }
