@@ -14,6 +14,7 @@ Forest - https://assetstore.unity.com/packages/3d/environments/landscapes/free-l
 More Forest - https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153  
 Health Bar - https://www.youtube.com/watch?v=BLfNP4Sc_iA  
 Rune Stones - https://sketchfab.com/3d-models/low-poly-fantasy-rune-stone-b78539a01fce41fea5d4ad1d1afd7b83  
+Damage Numbers and Text Pop-ups - https://www.youtube.com/watch?v=iD1_JczQcFY
   
 # Dependencies  
 Blender (https://www.blender.org/download/) is required to compile and run the project  
