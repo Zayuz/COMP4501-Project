@@ -26,6 +26,7 @@ public class Unit : Interactable
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        attackTimer = attackSpeed;
     }
 
     // Update is called once per frame
@@ -69,7 +70,7 @@ public class Unit : Interactable
         GetOutline().enabled = false;
     }
 
-    GameObject getClickedObject(out RaycastHit hit)
+    public GameObject getClickedObject(out RaycastHit hit)
     {
         GameObject target = null;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -85,7 +86,7 @@ public class Unit : Interactable
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        DamageNum.Create(transform.position, (int)damage, DamageNum.colors.orange);
+        DamageNum.Create(transform.position, ((int)damage).ToString(), DamageNum.colors.orange);
         if (currentHealth <= 0 && maxHealth >= 0) {
             Destroy(gameObject);
             return;
@@ -106,7 +107,7 @@ public class Unit : Interactable
         else {
             currentHealth += hp;
         }
-        DamageNum.Create(transform.position, (int)amountHealed, DamageNum.colors.green);
+        DamageNum.Create(transform.position, ((int)amountHealed).ToString(), DamageNum.colors.green);
 
         healthBar.SetCurrentHealth(currentHealth);
 

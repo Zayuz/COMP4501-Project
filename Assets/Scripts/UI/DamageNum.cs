@@ -11,15 +11,16 @@ public class DamageNum : MonoBehaviour
     {
         orange, // dmg
         green, // healing
+        pink,
         red // crits? not implemented yet
     } // popup text colors
 
     public Transform cam;
     // create a damage number
-    public static DamageNum Create(Vector3 pos, int damage, colors col) {
+    public static DamageNum Create(Vector3 pos, string text, colors col) {
         Transform damageNumTransform = Instantiate(GameAssets.i.pfDamagePopup, pos, Quaternion.identity);
         DamageNum damageNum = damageNumTransform.GetComponent<DamageNum>();
-        damageNum.Setup(damage, col);
+        damageNum.Setup(text, col);
         
         return damageNum;
     }
@@ -33,8 +34,8 @@ public class DamageNum : MonoBehaviour
         textMesh = transform.GetComponent<TextMeshPro>();
         
     }
-    public void Setup(int damageAmount, colors col) { 
-        textMesh.SetText(damageAmount.ToString());
+    public void Setup(string text, colors col) { 
+        textMesh.SetText(text);
         transform.LookAt(transform.position + cam.forward);
         //textColor = textMesh.color;
         Color newCol;
@@ -50,6 +51,13 @@ public class DamageNum : MonoBehaviour
             if (ColorUtility.TryParseHtmlString("#18FF00", out newCol))
             {
                 //Debug.Log("Green: " + newCol);
+                textColor = newCol;
+            }
+        }
+        else if (col == colors.pink)
+        {
+            if (ColorUtility.TryParseHtmlString("#FF00A4", out newCol))//#fc03d3
+            {
                 textColor = newCol;
             }
         }

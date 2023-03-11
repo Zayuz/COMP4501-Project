@@ -1465,6 +1465,7 @@ MonoBehaviour:
     m_Bits: 64
   healthBar: {fileID: 538817261}
   moveSpeed: 30
+  qCD: 0
 --- !u!1 &332606608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,6 +3405,7 @@ MonoBehaviour:
     m_Bits: 64
   healthBar: {fileID: 671278832}
   moveSpeed: 10
+  qCD: 0
 --- !u!1001 &603769671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8554,10 +8556,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596364062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a057d15c2901a541b92effeed87744b, type: 3}
+  m_Script: {fileID: 11500000, guid: ef31ca24900e7af4eab73d2fd916e2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 1
+  team: 0
   outline: {fileID: 1596364069}
   maxHealth: 100
   currentHealth: 0
@@ -8569,7 +8571,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   healthBar: {fileID: 1657546733}
-  moveSpeed: 10
+  moveSpeed: 40
+  qCD: 3
 --- !u!1001 &1602887813
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,17 +11,23 @@ public class Hero : Unit
     private int summoningPoints;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
+    protected float qTimer; // timer for ability on q key
+    public float qCD; // cooldown in seconds
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-
+        qTimer = qCD;
         potions = 0;
         summoningPoints = 0;
 
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.angularSpeed = moveSpeed;
         destination = transform.position;
+
+        currentHealth = maxHealth / 2; // to test healing
+        healthBar.SetCurrentHealth(currentHealth);
     }
 
     // Update is called once per frame
