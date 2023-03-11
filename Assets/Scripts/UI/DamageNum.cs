@@ -41,14 +41,14 @@ public class DamageNum : MonoBehaviour
         Color newCol;
         if (col == colors.orange)
         {
-            if (ColorUtility.TryParseHtmlString("#FF4E00", out newCol))
+            if (ColorUtility.TryParseHtmlString("orange", out newCol))
             {   
                 textColor = newCol;
             }
         }
         else if (col == colors.green)
         {
-            if (ColorUtility.TryParseHtmlString("#18FF00", out newCol))
+            if (ColorUtility.TryParseHtmlString("lime", out newCol))
             {
                 //Debug.Log("Green: " + newCol);
                 textColor = newCol;
@@ -56,13 +56,13 @@ public class DamageNum : MonoBehaviour
         }
         else if (col == colors.pink)
         {
-            if (ColorUtility.TryParseHtmlString("#FF00A4", out newCol))//#fc03d3
+            if (ColorUtility.TryParseHtmlString("fuchsia", out newCol))//#fc03d3
             {
                 textColor = newCol;
             }
         }
         else {
-            if (ColorUtility.TryParseHtmlString("#B20003", out newCol))
+            if (ColorUtility.TryParseHtmlString("red", out newCol))
             {
                 textColor = newCol;
             }

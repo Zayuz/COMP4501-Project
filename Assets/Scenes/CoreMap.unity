@@ -8559,7 +8559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef31ca24900e7af4eab73d2fd916e2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 1
   outline: {fileID: 1596364069}
   maxHealth: 100
   currentHealth: 0
