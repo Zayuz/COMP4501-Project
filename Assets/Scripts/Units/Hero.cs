@@ -34,6 +34,16 @@ public class Hero : Unit
             PickUpItem();
         }
 
+        if (Input.GetKeyDown(KeyCode.F) && potions > 0) { // use potion
+            if (currentHealth >= maxHealth)
+            {
+                Debug.Log("Already at max health!");
+            }
+            else {
+                Heal(100);
+                potions--;
+            }
+        }
         navMeshAgent.destination = destination;
     }
 

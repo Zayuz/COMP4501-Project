@@ -85,7 +85,7 @@ public class Unit : Interactable
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        DamageNum.Create(transform.position, (int)damage);
+        DamageNum.Create(transform.position, (int)damage, DamageNum.colors.orange);
         if (currentHealth <= 0 && maxHealth >= 0) {
             Destroy(gameObject);
             return;
@@ -96,6 +96,22 @@ public class Unit : Interactable
         Debug.Log("Health: " + currentHealth);
     }
 
+    public void Heal(float hp) {
+        float amountHealed = hp;
+        if ((currentHealth + hp) > maxHealth)
+        {
+            amountHealed = maxHealth - currentHealth;
+            currentHealth = maxHealth;
+        }
+        else {
+            currentHealth += hp;
+        }
+        DamageNum.Create(transform.position, (int)amountHealed, DamageNum.colors.green);
+
+        healthBar.SetCurrentHealth(currentHealth);
+
+        Debug.Log("Health: " + currentHealth);
+    }
     protected void AttackTarget()
     {
         if (clickedUnit.team != this.team && clickedUnit.maxHealth != 0)

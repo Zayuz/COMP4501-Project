@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 // credit to https://www.youtube.com/watch?v=iD1_JczQcFY
 public class DamageNum : MonoBehaviour
 {
+    public enum colors
+    {
+        orange, // dmg
+        green, // healing
+        red // crits? not implemented yet
+    } // popup text colors
+
     public Transform cam;
     // create a damage number
-    public static DamageNum Create(Vector3 pos, int damage) {
+    public static DamageNum Create(Vector3 pos, int damage, colors col) {
         Transform damageNumTransform = Instantiate(GameAssets.i.pfDamagePopup, pos, Quaternion.identity);
         DamageNum damageNum = damageNumTransform.GetComponent<DamageNum>();
-        damageNum.Setup(damage);
+        damageNum.Setup(damage, col);
         
         return damageNum;
     }
@@ -23,12 +31,36 @@ public class DamageNum : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         textMesh = transform.GetComponent<TextMeshPro>();
-        textColor = textMesh.color;
-        disappearTimer = 1f;
+        
     }
-    public void Setup(int damageAmount) { 
+    public void Setup(int damageAmount, colors col) { 
         textMesh.SetText(damageAmount.ToString());
         transform.LookAt(transform.position + cam.forward);
+        //textColor = textMesh.color;
+        Color newCol;
+        if (col == colors.orange)
+        {
+            if (ColorUtility.TryParseHtmlString("#FF4E00", out newCol))
+            {   
+                textColor = newCol;
+            }
+        }
+        else if (col == colors.green)
+        {
+            if (ColorUtility.TryParseHtmlString("#18FF00", out newCol))
+            {
+                //Debug.Log("Green: " + newCol);
+                textColor = newCol;
+            }
+        }
+        else {
+            if (ColorUtility.TryParseHtmlString("#B20003", out newCol))
+            {
+                textColor = newCol;
+            }
+        }
+        textMesh.color = textColor;
+        disappearTimer = 1f;
     }
 
     private void Update() {
