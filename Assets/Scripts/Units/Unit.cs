@@ -85,14 +85,14 @@ public class Unit : Interactable
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
+        DamageNum.Create(transform.position, (int)damage);
         if (currentHealth <= 0 && maxHealth >= 0) {
             Destroy(gameObject);
             return;
         }
 
         healthBar.SetCurrentHealth(currentHealth);
-
+        
         Debug.Log("Health: " + currentHealth);
     }
 
