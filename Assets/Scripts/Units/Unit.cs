@@ -37,12 +37,12 @@ public class Unit : Interactable
         if (Input.GetMouseButtonDown(1) && selected && (team == teams.allied))
         { // only allow commanding allied units
             GameObject dest = getClickedObject(out RaycastHit hit);
-            destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 
             if (dest != null)
             { // check if item or unit clicked on
                 clickedUnit = dest.GetComponent<Unit>();
                 clickedItem = dest.GetComponent<Item>();
+                destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
             else
             { // destination is null so no unit or item could be clicked on
