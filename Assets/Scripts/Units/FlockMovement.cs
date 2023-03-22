@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class is very broadly inspired by https://github.com/boardtobits/flocking-algorithm with many significant differences in structure and function
 public class FlockMovement : MonoBehaviour
 {
     List<Transform> flock;
     delegate Vector2 flockingComponents();
-    public float minSeperation = 3.0f;
+    public float minSeperation = 30.0f;
     public string flockTag;
     float[] weights;
+    public bool seek;
 
     // Start is called before the first frame update
     void Start()
@@ -34,35 +36,14 @@ public class FlockMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Add component of flocking movement functions to a delegate list for iteration
-        List<flockingComponents> flockingComponents = new List<flockingComponents>();
-        flockingComponents.Add(Seperate);
-        flockingComponents.Add(Cohesion);
-        flockingComponents.Add(Alignment);
-
-        //set up move
-        Vector2 move = Vector2.zero;
-        
-        //iterate through behaviors
-        for (int i = 0; i < flockingComponents.Count; i++)
+        if (seek)
         {
-            Vector2 partialMove = flockingComponents[i]() * weights[i];
-
-            if (partialMove != Vector2.zero)
-            {
-                if (partialMove.sqrMagnitude > weights[i] * weights[i])
-                {
-                    partialMove.Normalize();
-                    partialMove *= weights[i];
-                }
-
-                move += partialMove;
-
-            }
+            Seek();
         }
-
-        //Apply move to the gameobject
-        GetComponent<Transform>().position += (Vector3)move * Time.deltaTime / 3;
+        else
+        {
+            Wander();
+        }
     }
 
     Vector2 Seperate()
@@ -81,7 +62,8 @@ public class FlockMovement : MonoBehaviour
             if (Vector2.SqrMagnitude(flock[i].GetComponent<Transform>().position - GetComponent<Transform>().position) < minSeperation)
             {
                 nAvoid++;
-                avoidanceMove += (Vector2)(GetComponent<Transform>().position - flock[i].GetComponent<Transform>().position);
+                avoidanceMove.x += GetComponent<Transform>().position.x - flock[i].GetComponent<Transform>().position.x;
+                avoidanceMove.y += GetComponent<Transform>().position.x - flock[i].GetComponent<Transform>().position.z;
             }
         }
 
@@ -105,7 +87,8 @@ public class FlockMovement : MonoBehaviour
 
         for (int i = 0; i < flock.Count; i++)
         {
-            cohesionMove += (Vector2)flock[i].GetComponent<Transform>().position;
+            cohesionMove.x += flock[i].GetComponent<Transform>().position.x;
+            cohesionMove.y += flock[i].GetComponent<Transform>().position.z;
         }
         cohesionMove /= flock.Count;
 
@@ -126,7 +109,8 @@ public class FlockMovement : MonoBehaviour
 
         for (int i = 0; i < flock.Count; i++)
         {
-            alignmentMove += (Vector2)flock[i].GetComponent<Transform>().up;
+            alignmentMove.x += flock[i].GetComponent<Transform>().position.x;
+            alignmentMove.y += flock[i].GetComponent<Transform>().position.z;
         }
         alignmentMove /= flock.Count;
 
@@ -135,11 +119,90 @@ public class FlockMovement : MonoBehaviour
 
     void Seek()
     {
-        //Steering behavior
+        //Add component of flocking movement functions to a delegate list for iteration
+        List<flockingComponents> flockingComponents = new List<flockingComponents>();
+        flockingComponents.Add(Seperate);
+        flockingComponents.Add(Cohesion);
+        flockingComponents.Add(Alignment);
+
+        //set up move
+        Vector2 move = Vector2.zero;
+
+        //iterate through behaviors
+        for (int i = 0; i < flockingComponents.Count; i++)
+        {
+            Vector2 partialMove = flockingComponents[i]() * weights[i];
+
+            if (partialMove != Vector2.zero)
+            {
+                if (partialMove.sqrMagnitude > weights[i] * weights[i])
+                {
+                    partialMove.Normalize();
+                    partialMove *= weights[i];
+                }
+
+                move += partialMove;
+
+            }
+        }
+        //Apply move to the gameobject
+        Vector3 correctedMove;
+        correctedMove.x = move.x;
+        correctedMove.y = 0;
+        correctedMove.z = move.y;
+        GetComponent<Transform>().position += correctedMove * Time.deltaTime;
     }
 
     void Wander()
     {
+        Debug.Log("WANDER");
         //Steering behavior
+        //Add component of flocking movement functions to a delegate list for iteration
+        List<flockingComponents> flockingComponents = new List<flockingComponents>();
+        flockingComponents.Add(Seperate);
+        flockingComponents.Add(Cohesion);
+        flockingComponents.Add(Alignment);
+
+        //set up move
+        Vector2 move = Vector2.zero;
+
+        //iterate through behaviors
+        for (int i = 0; i < flockingComponents.Count; i++)
+        {
+            Vector2 partialMove = flockingComponents[i]() * weights[i];
+
+            if (partialMove != Vector2.zero)
+            {
+                if (partialMove.sqrMagnitude > weights[i] * weights[i])
+                {
+                    partialMove.Normalize();
+                    partialMove *= weights[i];
+                }
+
+                move += partialMove;
+
+            }
+        }
+
+        // Wander
+
+        // Find center of circle
+        //direction = velocity.normalized();
+        //center = position + direction * length;
+        // Random walk
+        //wdelta += random(-Rrad, Rrad) // Lazy...
+        //x = Vrad * cos(wdelta);
+        //y = Vrad * sin(wdelta);
+        //offset = vec3(x, y);
+        //target = center + offset;
+        //steer = seek(target);
+
+        //Apply move to the gameobject
+        //GetComponent<Transform>().position += (Vector3)move * Time.deltaTime * 3;
+        Vector3 correctedMove;
+        correctedMove.x = move.x;
+        correctedMove.y = 0;
+        correctedMove.z = move.y;
+        GetComponent<Transform>().position += correctedMove * Time.deltaTime * 3;
     }
 }

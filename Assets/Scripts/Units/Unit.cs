@@ -43,11 +43,19 @@ public class Unit : Interactable
                 clickedUnit = dest.GetComponent<Unit>();
                 clickedItem = dest.GetComponent<Item>();
                 destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                if (GetComponent<FlockMovement>() != false)
+                {
+                    GetComponent<FlockMovement>().seek = true;
+                }
             }
             else
             { // destination is null so no unit or item could be clicked on
                 clickedUnit = null;
                 clickedItem = null;
+                if(GetComponent<FlockMovement>() != false)
+                {
+                    GetComponent<FlockMovement>().seek = false;
+                }
             }
         }
 
@@ -124,6 +132,11 @@ public class Unit : Interactable
                 destination = transform.position; // stop moving to attack
                 clickedUnit.TakeDamage(attackDamage);
                 attackTimer = 0; // reset attack timer
+                if (GetComponent<FlockMovement>() != false)
+                {
+                    //Change behavior in flocks to reflect arrival at destination
+                    GetComponent<FlockMovement>().seek = false;
+                }
             }
             // we don't set clickedUnit to null so unit continues attacking unless commanded elsewhere
         }
