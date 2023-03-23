@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Unit : Interactable
 {
@@ -20,6 +21,7 @@ public class Unit : Interactable
     protected Unit clickedUnit;
     protected Item clickedItem;
     protected float attackTimer;
+    protected Animator animator;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -27,6 +29,7 @@ public class Unit : Interactable
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         attackTimer = attackSpeed;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,6 +65,21 @@ public class Unit : Interactable
         if (clickedUnit != null)
         {
             AttackTarget();
+        }
+
+        if (animator != null) {
+            animator.SetBool("isTakingDamage", false);
+            float destDist = Mathf.Sqrt(Mathf.Pow(destination.x - transform.position.x, 2) + Mathf.Pow(destination.z - transform.position.z, 2));
+            if (destDist >= 2.0)
+            {
+                animator.SetBool("isMoving", true);
+                animator.SetBool("isAttacking", false);
+                animator.SetBool("isTakingDamage", false);
+                //Debug.Log(animator.GetBool("isMoving"));
+            }
+            else {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 
@@ -100,6 +118,10 @@ public class Unit : Interactable
             return;
         }
 
+        if (animator != null)
+        {
+            animator.SetBool("isTakingDamage", true);
+        }
         healthBar.SetCurrentHealth(currentHealth);
         
         Debug.Log("Health: " + currentHealth);
@@ -131,11 +153,22 @@ public class Unit : Interactable
             {
                 destination = transform.position; // stop moving to attack
                 clickedUnit.TakeDamage(attackDamage);
+                if (clickedUnit.currentHealth <= 0 || clickedUnit == null) { // trying to get target to stop attacking dead enemy, still does
+                    if (animator != null)
+                    {
+                        animator.SetBool("isAttacking", false);
+                    }
+                }
                 attackTimer = 0; // reset attack timer
                 if (GetComponent<FlockMovement>() != false)
                 {
                     //Change behavior in flocks to reflect arrival at destination
                     GetComponent<FlockMovement>().seek = false;
+                }
+                if (animator != null) {
+                    animator.SetBool("isMoving", false);
+                    animator.SetBool("isAttacking", true);
+                    animator.SetBool("isTakingDamage", false);
                 }
             }
             // we don't set clickedUnit to null so unit continues attacking unless commanded elsewhere
@@ -144,6 +177,7 @@ public class Unit : Interactable
         if (clickedUnit == null) // check if object is destroyed
         {
             clickedUnit = null; // object needs to be manually set to null since it is not null when destroyed (weird I know)
+            
         }
     }
 }
