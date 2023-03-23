@@ -13,7 +13,6 @@ public class Unit : Interactable
     public float attackDamage;
     public int range;
     public int defense;
-    public LayerMask groundLayer;
     public HealthBar healthBar;
 
     protected Vector3 destination;
@@ -78,19 +77,6 @@ public class Unit : Interactable
         GetOutline().enabled = false;
     }
 
-    public GameObject getClickedObject(out RaycastHit hit)
-    {
-        GameObject target = null;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit, groundLayer))
-        {
-            target = hit.collider.gameObject;
-        }
-
-        return target;
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -121,6 +107,7 @@ public class Unit : Interactable
 
         Debug.Log("Health: " + currentHealth);
     }
+
     protected void AttackTarget()
     {
         if (clickedUnit.team != this.team && clickedUnit.maxHealth != 0)

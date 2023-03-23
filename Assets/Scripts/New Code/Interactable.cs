@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour
     [Header("Interactable Settings")]
     public teams team;
     public Outline outline;
+    public LayerMask groundLayer;
 
     protected bool selected;
 
@@ -68,5 +69,28 @@ public class Interactable : MonoBehaviour
         {
             GetOutline().enabled = false;
         }
+    }
+
+    public bool GetSelected()
+    {
+        return selected;
+    }
+
+    public teams GetTeam()
+    {
+        return team;
+    }
+
+    public GameObject getClickedObject(out RaycastHit hit)
+    {
+        GameObject target = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit, groundLayer))
+        {
+            target = hit.collider.gameObject;
+        }
+
+        return target;
     }
 }
