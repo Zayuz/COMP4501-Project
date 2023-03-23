@@ -39,13 +39,13 @@ public class Unit : Interactable
         if (Input.GetMouseButtonDown(1) && selected && (team == teams.allied))
         { // only allow commanding allied units
             GameObject dest = getClickedObject(out RaycastHit hit);
-            //Debug.Log(hit.point);
 
             if (dest != null)
             { // check if item or unit clicked on
                 clickedUnit = dest.GetComponent<Unit>();
                 clickedItem = dest.GetComponent<Item>();
                 destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                
                 if (GetComponent<FlockMovement>() != null)
                 {
                     GetComponent<FlockMovement>().seek = true;
@@ -55,32 +55,42 @@ public class Unit : Interactable
             { // destination is null so no unit or item could be clicked on
                 clickedUnit = null;
                 clickedItem = null;
-                if(GetComponent<FlockMovement>() != false)
+
+                if (GetComponent<FlockMovement>() != false)
                 {
                     GetComponent<FlockMovement>().seek = false;
                 }
             }
         }
 
+        // Attack target if unit is not null
         if (clickedUnit != null)
         {
             AttackTarget();
         }
+        else if (animator != null)
+        {
+            animator.SetBool("isAttacking", false);
+        }
 
         float destDist = Mathf.Sqrt(Mathf.Pow(destination.x - transform.position.x, 2) + Mathf.Pow(destination.z - transform.position.z, 2));
-        if (animator != null) {
+
+        if (animator != null) 
+        {
             animator.SetBool("isTakingDamage", false);
+
             if (destDist >= 2.0)
             {
                 animator.SetBool("isMoving", true);
                 animator.SetBool("isAttacking", false);
                 animator.SetBool("isTakingDamage", false);
-                //Debug.Log(animator.GetBool("isMoving"));
             }
-            else {
+            else 
+            {
                 animator.SetBool("isMoving", false);
             }
         }
+        
         if (GetComponent<FlockMovement>() != null)
         {
             if (destDist <= 10.0)
@@ -108,7 +118,9 @@ public class Unit : Interactable
     {
         currentHealth -= damage;
         DamageNum.Create(transform.position, ((int)damage).ToString(), DamageNum.colors.orange);
-        if (currentHealth <= 0 && maxHealth >= 0) {
+
+        if (currentHealth <= 0 && maxHealth >= 0) 
+        {
             Destroy(gameObject);
             return;
         }
@@ -117,26 +129,27 @@ public class Unit : Interactable
         {
             animator.SetBool("isTakingDamage", true);
         }
+
         healthBar.SetCurrentHealth(currentHealth);
-        
-        Debug.Log("Health: " + currentHealth);
     }
 
-    public void Heal(float hp) {
+    public void Heal(float hp) 
+    {
         float amountHealed = hp;
+
         if ((currentHealth + hp) > maxHealth)
         {
             amountHealed = maxHealth - currentHealth;
             currentHealth = maxHealth;
         }
-        else {
+        else 
+        {
             currentHealth += hp;
         }
+
         DamageNum.Create(transform.position, ((int)amountHealed).ToString(), DamageNum.colors.green);
 
         healthBar.SetCurrentHealth(currentHealth);
-
-        Debug.Log("Health: " + currentHealth);
     }
 
     protected void AttackTarget()
@@ -149,31 +162,23 @@ public class Unit : Interactable
             {
                 destination = transform.position; // stop moving to attack
                 clickedUnit.TakeDamage(attackDamage);
-                if (clickedUnit.currentHealth <= 0 || clickedUnit == null) { // trying to get target to stop attacking dead enemy, still does
-                    if (animator != null)
-                    {
-                        animator.SetBool("isAttacking", false);
-                    }
-                }
+
                 attackTimer = 0; // reset attack timer
+
                 if (GetComponent<FlockMovement>() != null)
                 {
                     //Change behavior in flocks to reflect arrival at destination
                     GetComponent<FlockMovement>().seek = false;
                 }
-                if (animator != null) {
+
+                if (animator != null)
+                {
                     animator.SetBool("isMoving", false);
                     animator.SetBool("isAttacking", true);
                     animator.SetBool("isTakingDamage", false);
                 }
             }
             // we don't set clickedUnit to null so unit continues attacking unless commanded elsewhere
-        }
-
-        if (clickedUnit == null) // check if object is destroyed
-        {
-            clickedUnit = null; // object needs to be manually set to null since it is not null when destroyed (weird I know)
-            
         }
     }
 }

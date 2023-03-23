@@ -25,9 +25,6 @@ public class Hero : Unit
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.angularSpeed = moveSpeed;
         destination = transform.position;
-
-        currentHealth = maxHealth / 2; // to test healing
-        healthBar.SetCurrentHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -55,6 +52,7 @@ public class Hero : Unit
         { // take a point of damage, for testing animations and combat
             TakeDamage(1.0f);
         }
+
         navMeshAgent.destination = destination;
     }
 
