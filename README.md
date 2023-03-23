@@ -23,23 +23,23 @@ Damage Numbers and Text Pop-ups - https://www.youtube.com/watch?v=iD1_JczQcFY
 Blender (https://www.blender.org/download/) is required to compile and run the project  
 
 # Controls
-Camera Movement - WASD keys or mouse movement to control the camera.
-Unit Selection - Left click on an allied unit or hold left click and drag over multiple allied units to select.
-Unit De-selection - Left click on an allied unit to deselect all units except the clicked unit, left click on something other than an allied unit (EX: terrain) to deselect all units.
-Unit Movement - Right click on terrain with allied unit(s) selected to command them to move to the right-clicked point.
-Unit Attacks - Right click on an enemy unit with allied unit(s) selected to command them to attack the enemy unit. Units will automatically attack an enemy at a frequency based on their attack speed once commanded to attack.
-Unit Gathering - Right click on a resource (crystals/potions) with allied unit(s) selected to command them to harvest said resource, increasing a unit's count of that resource.
-Consume Potion - If a selected unit has a potion available and is missing health, press the F key to consume the potion and restore the units health.
-Blink/Teleport - For the Cat Hero, when selected press Q to teleport to the location of the cursor. This ability has a cooldwon. More hero abilities will be implemented for all heroes.
-Take Damage - Press G while a hero is selected to have that hero take a single point of damage. For testing. If the opponent is idle, flinch animation will play.
+Camera Movement - WASD keys or mouse movement to control the camera.  
+Unit Selection - Left click on an allied unit or hold left click and drag over multiple allied units to select.  
+Unit De-selection - Left click on an allied unit to deselect all units except the clicked unit, left click on something other than an allied unit (EX: terrain) to deselect all units.  
+Unit Movement - Right click on terrain with allied unit(s) selected to command them to move to the right-clicked point.  
+Unit Attacks - Right click on an enemy unit with allied unit(s) selected to command them to attack the enemy unit. Units will automatically attack an enemy at a frequency based on their attack speed once commanded to attack.  
+Unit Gathering - Right click on a resource (crystals/potions) with allied unit(s) selected to command them to harvest said resource, increasing a unit's count of that resource.  
+Consume Potion - If a selected unit has a potion available and is missing health, press the F key to consume the potion and restore the units health.  
+Blink/Teleport - For the Cat Hero, when selected press Q to teleport to the location of the cursor. This ability has a cooldwon. More hero abilities will be implemented for all heroes.  
+Take Damage - Press G while a hero is selected to have that hero take a single point of damage. For testing. If the opponent is idle, flinch animation will play.  
 
 
-NOTE FOR FLOCK BEHAVIOR
-The cats have been moved to a large and blank landmass to the south of the map. This is so that they can demonstrate their wander behaviour properly. 
-For testing the behaviour it is recommended that the tester pauses the game via unity controls and selects Cat Mage (2), the leader of the flock. 
-They can then command that specific cat to move around and the other cats will automatically follow once it reaches the manual destination and starts to make decisions for the flock. 
-Every time the cat leader reaches a destination, it will wander with the other cats in a new destination. 
-All cats are using flock behaviours (alignment, avoidance, cohesion) at all times, but their influences are not particularly strong. 
+NOTE FOR FLOCK BEHAVIOR  
+The cats have been moved to a large and blank landmass to the south of the map. This is so that they can demonstrate their wander behaviour properly.  
+For testing the behaviour it is recommended that the tester pauses the game via unity controls and selects Cat Mage (2), the leader of the flock.  
+They can then command that specific cat to move around and the other cats will automatically follow once it reaches the manual destination and starts to make decisions for the flock.  
+Every time the cat leader reaches a destination, it will wander with the other cats in a new destination.  
+All cats are using flock behaviours (alignment, avoidance, cohesion) at all times, but their influences are not particularly strong.  
 When the cats arrive at their destination it is possible the swarm may obstruct the leader from being close enough to 'complete' the journey and select a new place for the cats to wander - 
-to fix this the cats stray from the group automatically once they arrive at their destination until the cat leader gives them a new place to go. 
-Side note, on cat swarm island specifically the raycasting for commands is not very consistent. If the cats are not responsive to commands, just keep clicking around in places until they are. 
+to fix this the cats stray from the group automatically once they arrive at their destination until the cat leader gives them a new place to go.  
+Side note, on cat swarm island specifically the raycasting for commands is not very consistent. If the cats are not responsive to commands, just keep clicking around in places until they are.  
