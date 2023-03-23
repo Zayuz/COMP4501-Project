@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13040191, g: 0.09601602, b: 0.061815564, a: 1}
+  m_IndirectSpecularColor: {r: 0.13040014, g: 0.09601523, b: 0.06181486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -367,6 +367,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   outline: {fileID: 38706649}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   type: 1
   respawnTime: 15
   respawner: {fileID: 2050753932}
@@ -2119,15 +2122,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 242158988}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 114218906}
   moveSpeed: 40
   qCD: 3
@@ -3369,15 +3372,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 327571917}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 25
   attackSpeed: 1
   attackDamage: 20
   range: 20
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 538817261}
   moveSpeed: 30
   qCD: 0
@@ -3527,15 +3530,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 336800098}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 200
   currentHealth: 0
   attackSpeed: 0
   attackDamage: 0
   range: 0
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
   healthBar: {fileID: 245749472}
   structureType: 1
 --- !u!114 &336800098
@@ -3868,15 +3871,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 369214066}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 248608001}
   moveSpeed: 40
   qCD: 3
@@ -4589,15 +4592,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 2
   outline: {fileID: 405430650}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 1000
   currentHealth: 0
   attackSpeed: 0
   attackDamage: 0
   range: 0
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 556624479}
   structureType: 0
 --- !u!114 &405430650
@@ -4885,6 +4888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   outline: {fileID: 477912499}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   type: 0
   respawnTime: 15
   respawner: {fileID: 1009704104}
@@ -6157,15 +6163,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 540508787}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 879891906}
   moveSpeed: 40
   qCD: 3
@@ -6780,15 +6786,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 601983459}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 20
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 671278832}
   moveSpeed: 10
   qCD: 0
@@ -8332,6 +8338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   outline: {fileID: 724449403}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   type: 0
   respawnTime: 15
   respawner: {fileID: 512726308}
@@ -8877,15 +8886,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 2
   outline: {fileID: 775341796}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 200
   currentHealth: 0
   attackSpeed: 0
   attackDamage: 0
   range: 0
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
   healthBar: {fileID: 2016618412}
   structureType: 1
 --- !u!114 &775341796
@@ -9842,15 +9851,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 869278196}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 375597253}
   moveSpeed: 40
   qCD: 3
@@ -10649,15 +10658,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 951330925}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 1921330165}
   moveSpeed: 40
   qCD: 3
@@ -13139,6 +13148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   outline: {fileID: 1201122956}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   type: 1
   respawnTime: 15
   respawner: {fileID: 2096390191}
@@ -13692,15 +13704,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1291928054}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 233698726}
   moveSpeed: 40
   qCD: 3
@@ -14027,15 +14039,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1308669363}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 25
   attackSpeed: 1
   attackDamage: 20
   range: 20
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 1491148836}
   moveSpeed: 30
   qCD: 0
@@ -14145,15 +14157,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1309610538}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 1000
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
   healthBar: {fileID: 730510747}
   structureType: 0
 --- !u!114 &1309610538
@@ -14823,15 +14835,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1437223205}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 1492191331}
   moveSpeed: 40
   qCD: 3
@@ -15580,15 +15592,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1482924495}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 996711626}
   moveSpeed: 40
   qCD: 3
@@ -16501,15 +16513,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1596364069}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 1657546733}
   moveSpeed: 40
   qCD: 3
@@ -16654,15 +16666,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   outline: {fileID: 1615271564}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 0
   attackDamage: 0
   range: 0
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 1996054756}
 --- !u!65 &1615271566
 BoxCollider:
@@ -18802,15 +18814,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1778632798}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 619983776}
   moveSpeed: 40
   qCD: 3
@@ -20447,15 +20459,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1941059137}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 324452972}
   moveSpeed: 40
   qCD: 3
@@ -20699,15 +20711,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 1984586735}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 1885369925}
   moveSpeed: 40
   qCD: 3
@@ -22637,15 +22649,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   outline: {fileID: 2086059608}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 20
   range: 10
   defense: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   healthBar: {fileID: 2132644187}
   moveSpeed: 10
   qCD: 0
