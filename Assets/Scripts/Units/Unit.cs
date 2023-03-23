@@ -15,8 +15,8 @@ public class Unit : Interactable
     public int range;
     public int defense;
     public HealthBar healthBar;
+    public Vector3 destination;
 
-    protected Vector3 destination;
     protected Unit clickedUnit;
     protected Item clickedItem;
     protected float attackTimer;
@@ -39,13 +39,14 @@ public class Unit : Interactable
         if (Input.GetMouseButtonDown(1) && selected && (team == teams.allied))
         { // only allow commanding allied units
             GameObject dest = getClickedObject(out RaycastHit hit);
+            //Debug.Log(hit.point);
 
             if (dest != null)
             { // check if item or unit clicked on
                 clickedUnit = dest.GetComponent<Unit>();
                 clickedItem = dest.GetComponent<Item>();
                 destination = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                if (GetComponent<FlockMovement>() != false)
+                if (GetComponent<FlockMovement>() != null)
                 {
                     GetComponent<FlockMovement>().seek = true;
                 }
@@ -66,9 +67,9 @@ public class Unit : Interactable
             AttackTarget();
         }
 
+        float destDist = Mathf.Sqrt(Mathf.Pow(destination.x - transform.position.x, 2) + Mathf.Pow(destination.z - transform.position.z, 2));
         if (animator != null) {
             animator.SetBool("isTakingDamage", false);
-            float destDist = Mathf.Sqrt(Mathf.Pow(destination.x - transform.position.x, 2) + Mathf.Pow(destination.z - transform.position.z, 2));
             if (destDist >= 2.0)
             {
                 animator.SetBool("isMoving", true);
@@ -78,6 +79,14 @@ public class Unit : Interactable
             }
             else {
                 animator.SetBool("isMoving", false);
+            }
+        }
+        if (GetComponent<FlockMovement>() != null)
+        {
+            if (destDist <= 10.0)
+            {
+                //Change behavior in flocks to reflect arrival at destination
+                GetComponent<FlockMovement>().seek = false;
             }
         }
     }
@@ -147,7 +156,7 @@ public class Unit : Interactable
                     }
                 }
                 attackTimer = 0; // reset attack timer
-                if (GetComponent<FlockMovement>() != false)
+                if (GetComponent<FlockMovement>() != null)
                 {
                     //Change behavior in flocks to reflect arrival at destination
                     GetComponent<FlockMovement>().seek = false;

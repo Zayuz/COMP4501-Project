@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Random = System.Random;
 
 //This class is very broadly inspired by https://github.com/boardtobits/flocking-algorithm with many significant differences in structure and function
 public class FlockMovement : MonoBehaviour
@@ -11,6 +13,7 @@ public class FlockMovement : MonoBehaviour
     public string flockTag;
     float[] weights;
     public bool seek;
+    public bool leader;
 
     // Start is called before the first frame update
     void Start()
@@ -36,13 +39,77 @@ public class FlockMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (seek)
+        //Steering behavior changes the movement pattern
+        //Add component of flocking movement functions to a delegate list for iteration
+        List<flockingComponents> flockingComponents = new List<flockingComponents>();
+        flockingComponents.Add(Seperate);
+        flockingComponents.Add(Cohesion);
+        flockingComponents.Add(Alignment);
+
+        //set up move
+        Vector2 move = Vector2.zero;
+
+        //iterate through flocking behaviors
+        for (int i = 0; i < flockingComponents.Count; i++)
         {
-            Seek();
+            Vector2 partialMove = flockingComponents[i]() * weights[i];
+
+            if (partialMove != Vector2.zero)
+            {
+                if (partialMove.sqrMagnitude > weights[i] * weights[i])
+                {
+                    partialMove.Normalize();
+                    partialMove *= weights[i];
+                }
+
+                move += partialMove;
+
+            }
+        }
+        //Add random wandering to prior flock movement
+        Random rnd = new Random();
+        Vector3 unitDest = GetComponent<Unit>().destination;
+        float destDist = Mathf.Sqrt(Mathf.Pow(unitDest.x - transform.position.x, 2) + Mathf.Pow(unitDest.z - transform.position.z, 2));
+        Vector3 correctedMove;
+        float wDelta = rnd.Next(1, 361);
+
+        //Only change the movement pattern if the unit has not already decided to go somewhere and wander is true
+        if (destDist < 2 && seek != true && leader)
+        {
+            //When the leader arrives at the seek destination is plots a new course for the entire herd
+            correctedMove.x = (float)(3 * Math.Cos(wDelta) + move.x);
+            correctedMove.y = 0;
+            correctedMove.z = (float)(3 * Math.Sin(wDelta) + move.y);
+            GetComponent<Transform>().position += correctedMove * Time.deltaTime;
+            GetComponent<Unit>().destination.x = transform.position.x + (correctedMove.x * 15);
+            GetComponent<Unit>().destination.z = transform.position.z + (correctedMove.z * 15);
+            seek = true;
+
+            foreach (Transform tagged in GameObject.FindWithTag(flockTag).transform)
+            {
+                Unit taggedUnit = tagged.GetComponent<Unit>();
+                taggedUnit.destination.x = transform.position.x + (correctedMove.x * 15);
+                taggedUnit.destination.z = transform.position.z + (correctedMove.z * 15);
+            }
+        }
+        else if(destDist < 2 && seek != true)
+        {
+            //Non leaders will wander out of the way so that the leader can get to the destination and set a new course
+            correctedMove.x = (float)(3 * Math.Cos(wDelta) + move.x);
+            correctedMove.y = 0;
+            correctedMove.z = (float)(3 * Math.Sin(wDelta) + move.y);
+            GetComponent<Transform>().position += correctedMove * Time.deltaTime;
+            GetComponent<Unit>().destination.x = transform.position.x + (correctedMove.x * 15);
+            GetComponent<Unit>().destination.z = transform.position.z + (correctedMove.z * 15);
+            seek = true;
         }
         else
         {
-            Wander();
+            //Not close enough to 'wander' in a new direction
+            correctedMove.x = move.x;
+            correctedMove.y = 0;
+            correctedMove.z = move.y;
+            GetComponent<Transform>().position += correctedMove * Time.deltaTime;
         }
     }
 
@@ -115,94 +182,5 @@ public class FlockMovement : MonoBehaviour
         alignmentMove /= flock.Count;
 
         return alignmentMove;
-    }
-
-    void Seek()
-    {
-        //Add component of flocking movement functions to a delegate list for iteration
-        List<flockingComponents> flockingComponents = new List<flockingComponents>();
-        flockingComponents.Add(Seperate);
-        flockingComponents.Add(Cohesion);
-        flockingComponents.Add(Alignment);
-
-        //set up move
-        Vector2 move = Vector2.zero;
-
-        //iterate through behaviors
-        for (int i = 0; i < flockingComponents.Count; i++)
-        {
-            Vector2 partialMove = flockingComponents[i]() * weights[i];
-
-            if (partialMove != Vector2.zero)
-            {
-                if (partialMove.sqrMagnitude > weights[i] * weights[i])
-                {
-                    partialMove.Normalize();
-                    partialMove *= weights[i];
-                }
-
-                move += partialMove;
-
-            }
-        }
-        //Apply move to the gameobject
-        Vector3 correctedMove;
-        correctedMove.x = move.x;
-        correctedMove.y = 0;
-        correctedMove.z = move.y;
-        GetComponent<Transform>().position += correctedMove * Time.deltaTime;
-    }
-
-    void Wander()
-    {
-        Debug.Log("WANDER");
-        //Steering behavior
-        //Add component of flocking movement functions to a delegate list for iteration
-        List<flockingComponents> flockingComponents = new List<flockingComponents>();
-        flockingComponents.Add(Seperate);
-        flockingComponents.Add(Cohesion);
-        flockingComponents.Add(Alignment);
-
-        //set up move
-        Vector2 move = Vector2.zero;
-
-        //iterate through behaviors
-        for (int i = 0; i < flockingComponents.Count; i++)
-        {
-            Vector2 partialMove = flockingComponents[i]() * weights[i];
-
-            if (partialMove != Vector2.zero)
-            {
-                if (partialMove.sqrMagnitude > weights[i] * weights[i])
-                {
-                    partialMove.Normalize();
-                    partialMove *= weights[i];
-                }
-
-                move += partialMove;
-
-            }
-        }
-
-        // Wander
-
-        // Find center of circle
-        //direction = velocity.normalized();
-        //center = position + direction * length;
-        // Random walk
-        //wdelta += random(-Rrad, Rrad) // Lazy...
-        //x = Vrad * cos(wdelta);
-        //y = Vrad * sin(wdelta);
-        //offset = vec3(x, y);
-        //target = center + offset;
-        //steer = seek(target);
-
-        //Apply move to the gameobject
-        //GetComponent<Transform>().position += (Vector3)move * Time.deltaTime * 3;
-        Vector3 correctedMove;
-        correctedMove.x = move.x;
-        correctedMove.y = 0;
-        correctedMove.z = move.y;
-        GetComponent<Transform>().position += correctedMove * Time.deltaTime * 3;
     }
 }
