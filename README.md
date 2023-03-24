@@ -31,10 +31,23 @@ Unit Attacks - Right click on an enemy unit with allied unit(s) selected to comm
 Unit Gathering - Right click on a resource (crystals/potions) with allied unit(s) selected to command them to harvest said resource, increasing a unit's count of that resource.  
 Consume Potion - If a selected unit has a potion available and is missing health, press the F key to consume the potion and restore the units health.  
 Blink/Teleport - For the Cat Hero, when selected press Q to teleport to the location of the cursor. This ability has a cooldwon. More hero abilities will be implemented for all heroes.  
-Take Damage - Press G while a hero is selected to have that hero take a single point of damage. For testing. If the opponent is idle, flinch animation will play.  
+Take Damage - Press G while a hero is selected to have that hero take a single point of damage. For testing. If the unit is idle, flinch animation will play.  
 
+# Advanced Prototype Requirements
+## Animation
+There is a DogKnight unit on the east of the map that has the Hermite Spline implemented for movement.  
+The movement is coded in the SplineMovement script and implemented in the SplineUnit script.  
+As we will not be using this type of movement for our final submission, this is the only unit with that type of movement.  
 
-NOTE FOR FLOCK BEHAVIOR  
+## Character Animation
+The GamblerCat, Wizard, and DogKnight each have a different idle, moving, taking damage, and attacking animation.  
+The Golem has an idle and taking damage animation.
+The idle animation plays when the unit is still.  
+The moving animation plays when the unit is moving.
+The attacking animation plays with the unit is attacking.  
+The taking damage animation plays when the unit takes damage and no other animations (other than idle) are happening. This can be tested by pressing G with a unit selected, or by attacking the golem in the middle of the map.  
+
+## Physics and Steering
 The cats have been moved to a large and blank landmass to the south of the map. This is so that they can demonstrate their wander behaviour properly.  
 For testing the behaviour it is recommended that the tester pauses the game via unity controls and selects Cat Mage (2), the leader of the flock.  
 They can then command that specific cat to move around and the other cats will automatically follow once it reaches the manual destination and starts to make decisions for the flock.  
