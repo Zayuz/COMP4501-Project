@@ -26,12 +26,12 @@ public class SplineMovement : MonoBehaviour
     {
         for (float t = 0.0f; t < 1.0f; t += 0.01f)
         {
-            float ease = Ease(t);
+            //float ease = Ease(t);
+            float ease = CubicEase(t, 0.0f, 0.55f, 1.0f);
             this.transform.position = GetPosition(ease);
             this.transform.rotation = GetOrientation(ease);
             yield return new WaitForSeconds(0.05f);
         }
-
         yield return null;
     }
 
@@ -84,5 +84,17 @@ public class SplineMovement : MonoBehaviour
     float Ease(float t)
     {
         return (Mathf.Sin(t * Mathf.PI - Mathf.PI / 2.0f) + 1.0f) / 2.0f;
+    }
+
+    float CubicEase(float t, float b, float c, float d)
+    {
+        //t = current time
+        //b = start value
+        //c = change in value
+        //d = duration
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
     }
 }
