@@ -2,9 +2,9 @@
 A term project made by Johnson, Kayla, and Ryan for COMP4501 at Carleton University.  
   
 # Assets  
-Wizard - https://assetstore.unity.com/packages/3d/characters/creatures/fantasy-monster-wizard-demo-103037
-Gambler Cat - https://assetstore.unity.com/packages/3d/characters/creatures/gambler-cat-20897
-Dog Knight - https://assetstore.unity.com/packages/3d/characters/animals/dog-knight-pbr-polyart-135227
+Wizard - https://assetstore.unity.com/packages/3d/characters/creatures/fantasy-monster-wizard-demo-103037  
+Gambler Cat - https://assetstore.unity.com/packages/3d/characters/creatures/gambler-cat-20897  
+Dog Knight - https://assetstore.unity.com/packages/3d/characters/animals/dog-knight-pbr-polyart-135227  
 Cat - https://sketchfab.com/3d-models/toon-cat-free-b2bd1ee7858444bda366110a2d960386  
 Deer druid - https://sketchfab.com/3d-models/deer-druid-9f962da38a59441680ba3cfaf7f84f22  
 Armadillo - https://www.turbosquid.com/3d-models/armadillo-andean-model-1732536#  
@@ -17,8 +17,8 @@ Forest - https://assetstore.unity.com/packages/3d/environments/landscapes/free-l
 More Forest - https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153  
 Health Bar - https://www.youtube.com/watch?v=BLfNP4Sc_iA  
 Rune Stones - https://sketchfab.com/3d-models/low-poly-fantasy-rune-stone-b78539a01fce41fea5d4ad1d1afd7b83  
-Damage Numbers and Text Pop-ups - https://www.youtube.com/watch?v=iD1_JczQcFY
-  
+Damage Numbers and Text Pop-ups - https://www.youtube.com/watch?v=iD1_JczQcFY  
+
 # Dependencies  
 Blender (https://www.blender.org/download/) is required to compile and run the project  
 
