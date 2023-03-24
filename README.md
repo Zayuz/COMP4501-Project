@@ -41,7 +41,7 @@ As we will not be using this type of movement for our final submission, this is 
 
 ## Character Animation
 The GamblerCat, Wizard, and DogKnight each have a different idle, moving, taking damage, and attacking animation.  
-The Golem has an idle and taking damage animation.
+The Golem has an idle and taking damage animation.  
 The idle animation plays when the unit is still.  
 The moving animation plays when the unit is moving.
 The attacking animation plays with the unit is attacking.  
