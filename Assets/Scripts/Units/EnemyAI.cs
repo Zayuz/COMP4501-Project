@@ -6,13 +6,13 @@ public class EnemyAI : MonoBehaviour
 {
     public Hero hero;
     public bool inCombat;
-    public bool winningCombat;
+    public int combatScore;
+    public int priority;
 
     // Start is called before the first frame update
     void Start()
     {
-        inCombat = false;
-        winningCombat = false;
+        combatScore = 2;
     }
 
     // Update is called once per frame
@@ -20,18 +20,70 @@ public class EnemyAI : MonoBehaviour
     {
         //Check if the unit is in combat and update accordingly
         CombatCheck();
+        Unit self = GetComponent<Unit>();
 
         if (inCombat)
         {
-            //Priority 1, retreat from losing combat (or consume healing item)
-            //When in combat and enemy attacker is healthier than the self by 20%, consume healing item or run
-            //Potentially call to other AI units to help in combat
 
-            //Priority 2, continue victorious combat
-            //Nothiing changes
+            //Pick most significant target to attack
+            if (self.clickedUnit == null) {
+                float targetDist = 1000;
+                //Check all enemies within 40f
+                //Layermask 8 = units
+                int layerMask = 1 << 8;
+                Collider[] hitColliders = Physics.OverlapSphere(transform.localPosition, 40f, layerMask);
+                foreach (var hitCollider in hitColliders)
+                {
+                    Unit unit = hitCollider.GetComponent<Unit>();
+                    if (unit != null)
+                    {
+                        if (unit.team != self.team)
+                        {
+                            //Pick the closest to attack!
+                            float dist = Mathf.Sqrt(Mathf.Pow(unit.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(unit.transform.localPosition.z - transform.localPosition.z, 2));
+                            if (dist < targetDist)
+                            {
+                                targetDist = dist;
+                                self.clickedUnit = unit;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (combatScore >= 0 && self.clickedUnit != null)
+            {
+                //Priority 2, Continue victorious combat
+                //Nothing changes
+                self.AttackTarget();
+                priority = 2;
+            }
+            else
+            {
+                //Priority 1, retreat from losing combat (or consume healing item)
+                //When in combat and losing consume healing item, call allies, or run
+                //Potentially call to other AI units to help in combat
+                priority = 1;
+                if ((self.currentHealth < self.maxHealth / 2) && hero.CheckPotions() > 0)
+                {
+                    hero.UsePotion();
+                }
+                else
+                {
+                    //Call for support and retreat
+                    CallAllies();
+                    self.destination = new Vector3(-72, 1, -2);
+                    //self.clickedUnit = null;
+                }
+            }
+
+            
+
+            
         }
         else
         {
+            priority = 3;
             //Priority 3, seek nearby weak enemies
             //Use collision sphere to determine enemies in range 40 and hunt them down if they are weak and we are strong
 
@@ -55,29 +107,32 @@ public class EnemyAI : MonoBehaviour
     void CombatCheck()
     {
         float targetDist = 100000;
-        //Check all units on team 'allied' to determine if they are nearby
-        GameObject[] all_units = GameObject.FindGameObjectsWithTag("Unit");
-        Interactable.teams team = GetComponent<Unit>().team;
-        foreach (var item in all_units)
+        Unit self = GetComponent<Unit>();
+        int layerMask = 1 << 8;
+        //Check all units on other teams to determine proximity
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.localPosition, 40f, layerMask);
+        foreach (var hitCollider in hitColliders)
         {
-            Unit unit = item.GetComponent<Unit>();
+            Unit unit = hitCollider.GetComponent<Unit>();
             if (unit != null)
             {
-                if(unit.team != team)
+                if (unit.team != self.team)
                 {
                     targetDist = Mathf.Min(Mathf.Sqrt(Mathf.Pow(unit.transform.localPosition.x - transform.localPosition.x, 2)
                     + Mathf.Pow(unit.transform.localPosition.z - transform.localPosition.z, 2)), targetDist);
                 }
             }
         }
-
+        
         //Define in combat as in proximity to an enemy by 25 units
-        if (25f >= targetDist) {
+        if (40f > targetDist && targetDist != 100000) {
             inCombat = true;
             EvaluateCombat();
         }
         else {
             inCombat = false;
+            self.clickedUnit = null;
         }
     }
 
@@ -88,8 +143,8 @@ public class EnemyAI : MonoBehaviour
         int layerMask = 1 << 8;
         Unit self = GetComponent<Unit>();
 
-        //Base willingness to enter combat == 2
-        int combatScore = 2;
+        //Base willingness to enter combat == 1
+        combatScore = 1;
 
         //Consider health of unit before anything else
         if (self.currentHealth <= 3 * self.maxHealth / 4)
@@ -135,16 +190,12 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+    }
 
-        //Debug.Log(combatScore);
-
-        if(combatScore >= 0)
-        {
-            winningCombat = true;
-        }
-        else
-        {
-            winningCombat = false;
-        }
+    void CallAllies()
+    {
+        //Call allies to help the unit in battle if they are available and nearby
+        //Check other allies in 40f if they have the enemyAI script. If they do and their priority is greater than 2, they come help.
+        return;
     }
 }

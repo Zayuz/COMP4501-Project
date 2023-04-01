@@ -43,8 +43,7 @@ public class Hero : Unit
                 Debug.Log("Already at max health!");
             }
             else {
-                Heal(100);
-                potions--;
+                UsePotion();
             }
         }
 
@@ -87,6 +86,18 @@ public class Hero : Unit
 
     public virtual void UseQ()
     {
+        return;
+    }
+
+    public int CheckPotions()
+    {
+        return potions;
+    }
+
+    public void UsePotion()
+    {
+        Heal(100);
+        potions--;
         return;
     }
 }

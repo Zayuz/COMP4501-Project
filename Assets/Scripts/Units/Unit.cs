@@ -17,9 +17,9 @@ public class Unit : Interactable
     public int defense;
     public HealthBar healthBar;
     public Vector3 destination;
+    public Unit clickedUnit;
+    public Item clickedItem;
 
-    protected Unit clickedUnit;
-    protected Item clickedItem;
     protected float attackTimer;
     protected Animator animator;
 
@@ -153,7 +153,7 @@ public class Unit : Interactable
         healthBar.SetCurrentHealth(currentHealth);
     }
 
-    protected void AttackTarget()
+    public void AttackTarget()
     {
         if (clickedUnit.team != this.team && clickedUnit.maxHealth != 0)
         { // walk towards target to attack until in range

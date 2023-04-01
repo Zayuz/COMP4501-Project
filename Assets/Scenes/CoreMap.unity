@@ -2368,6 +2368,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 114218906}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &242158988
@@ -3681,6 +3683,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 538817261}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 30
   qCD: 0
 --- !u!95 &327571920
@@ -3840,6 +3844,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 245749472}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   structureType: 1
 --- !u!114 &336800098
 MonoBehaviour:
@@ -4348,6 +4354,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 248608001}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &369214066
@@ -5144,6 +5152,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 556624479}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   structureType: 0
 --- !u!114 &405430650
 MonoBehaviour:
@@ -6853,6 +6863,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 879891906}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &540508787
@@ -7515,6 +7527,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 671278832}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 10
   qCD: 0
 --- !u!1001 &603769671
@@ -9510,6 +9524,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 622170295}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 30
   qCD: 0
 --- !u!54 &735253559
@@ -10038,6 +10054,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 2016618412}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   structureType: 1
 --- !u!114 &775341796
 MonoBehaviour:
@@ -11139,6 +11157,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 375597253}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &869278196
@@ -11956,6 +11976,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1921330165}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &951330925
@@ -15016,6 +15038,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1586131009}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1224933802
@@ -15436,6 +15460,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1761803752}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
 --- !u!114 &1244593672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15814,6 +15840,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 233698726}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1291928054
@@ -16151,6 +16179,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1491148836}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 30
   qCD: 0
 --- !u!54 &1308669362
@@ -16270,6 +16300,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 730510747}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   structureType: 0
 --- !u!114 &1309610538
 MonoBehaviour:
@@ -17083,6 +17115,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1492191331}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1437223205
@@ -18139,6 +18173,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 996711626}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1482924495
@@ -19323,6 +19359,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1657546733}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!1001 &1602887813
@@ -19478,6 +19516,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1996054756}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
 --- !u!65 &1615271566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22019,6 +22059,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 619983776}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1778632798
@@ -22741,7 +22783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829323514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -91.16, y: 19.71, z: 19.58}
+  m_LocalPosition: {x: -9.17, y: 19.71, z: 39.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22775,6 +22817,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1445363836}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 10
   qCD: 10
   qMaxDuration: 3
@@ -22792,7 +22836,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hero: {fileID: 1829323516}
   inCombat: 0
-  winningCombat: 0
+  combatScore: 0
+  priority: 0
 --- !u!135 &1829323518
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22863,7 +22908,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 4
-  m_BaseOffset: 0
+  m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!4 &1840781650 stripped
@@ -24122,6 +24167,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 324452972}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1941059137
@@ -24512,6 +24559,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 1885369925}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
 --- !u!114 &1984586735
@@ -26639,6 +26688,8 @@ MonoBehaviour:
   defense: 0
   healthBar: {fileID: 2132644187}
   destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
   moveSpeed: 10
   qCD: 10
   qMaxDuration: 3
