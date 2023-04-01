@@ -1977,7 +1977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: be5995a9158bda9459c22d48acd79a3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.9515276
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: be5995a9158bda9459c22d48acd79a3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4059,7 +4059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: be5995a9158bda9459c22d48acd79a3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.9515276
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: be5995a9158bda9459c22d48acd79a3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4946,7 +4946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.14, y: -4.42}
+  m_AnchoredPosition: {x: 0.14, y: 3.3}
   m_SizeDelta: {x: 13.818, y: 4.0941}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397249654
@@ -9443,7 +9443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735253554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -84.43, y: 46.82, z: 28.23}
+  m_LocalPosition: {x: -84.43, y: 15, z: 28.23}
   m_LocalScale: {x: 3.53, y: 3.53, z: 3.53}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -9565,7 +9565,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 7.5
+  m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &736362306
@@ -16084,7 +16084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308669357}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 67.28, y: 46.82, z: 29.97}
+  m_LocalPosition: {x: 67.28, y: 18.82, z: 29.97}
   m_LocalScale: {x: 3.53, y: 3.53, z: 3.53}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16206,7 +16206,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 7.5
+  m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &1309610535
@@ -18744,7 +18744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.14, y: -4.42}
+  m_AnchoredPosition: {x: 0.14, y: 3.47}
   m_SizeDelta: {x: 13.818, y: 4.0941}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542345617
@@ -22792,6 +22792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hero: {fileID: 1829323516}
   inCombat: 0
+  winningCombat: 0
 --- !u!135 &1829323518
 SphereCollider:
   m_ObjectHideFlags: 0
