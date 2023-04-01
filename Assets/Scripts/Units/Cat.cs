@@ -10,8 +10,8 @@ public class Cat : Hero
     protected override void Update()
     {
         base.Update();
-        qTimer += Time.deltaTime; // time since last attack (for tracking cooldown)
-        if (Input.GetKeyDown(KeyCode.Q))
+        qTimer += Time.deltaTime; // time since last cast (for tracking cooldown)
+        if (Input.GetKeyDown(KeyCode.Q) && selected)
         {
             if (qTimer >= qCD)
             {
@@ -22,6 +22,9 @@ public class Cat : Hero
                 DamageNum.Create(transform.position, "BAMF!", DamageNum.colors.pink); // teleport sound effect / indicator
                 qTimer = 0;
                 destination = transform.position;
+            }
+            else {
+                DamageNum.Create(transform.position, (qCD-qTimer).ToString("0.0") + "s left", DamageNum.colors.orange); // cooldown message
             }
 
         }

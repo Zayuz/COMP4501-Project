@@ -9,7 +9,7 @@ public class Hero : Unit
 
     private int potions;
     private int summoningPoints;
-    private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
     protected float qTimer; // timer for ability on q key
     public float qCD; // cooldown in seconds
@@ -18,7 +18,7 @@ public class Hero : Unit
     protected override void Start()
     {
         base.Start();
-        qTimer = qCD;
+        qTimer = qCD; // abilities available from the start
         potions = 0;
         summoningPoints = 0;
 

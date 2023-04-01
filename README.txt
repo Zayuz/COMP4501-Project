@@ -30,7 +30,8 @@ Unit Movement - Right click on terrain with allied unit(s) selected to command t
 Unit Attacks - Right click on an enemy unit with allied unit(s) selected to command them to attack the enemy unit. Units will automatically attack an enemy at a frequency based on their attack speed once commanded to attack.
 Unit Gathering - Right click on a resource (crystals/potions) with allied unit(s) selected to command them to harvest said resource, increasing a unit's count of that resource.
 Consume Potion - If a selected unit has a potion available and is missing health, press the F key to consume the potion and restore the units health.
-Blink/Teleport - For the Cat Hero, when selected press Q to teleport to the location of the cursor. This ability has a cooldwon. More hero abilities will be implemented for all heroes.
+Blink/Teleport - For the Cat Hero, when selected press Q to teleport to the location of the cursor. This ability has a cooldown. More hero abilities will be implemented for all heroes.
+Speed/damage buff - For the Dog Knight Hero, when selected press Q to increase speed and damage for 3 seconds. This ability has a cooldown. More hero abilities will be implemented for all heroes.
 Take Damage - Press G while a hero is selected to have that hero take a single point of damage. For testing. If the opponent is idle, flinch animation will play.
 
 NOTE FOR FLOCK BEHAVIOR
