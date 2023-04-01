@@ -79,4 +79,14 @@ public class Hero : Unit
             clickedItem = null;
         }
     }
+
+    public bool CheckQCD()
+    {
+        return qTimer >= qCD;
+    }
+
+    public virtual void UseQ()
+    {
+        return;
+    }
 }

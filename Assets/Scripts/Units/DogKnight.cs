@@ -31,21 +31,27 @@ public class DogKnight : Hero
 
         if (Input.GetKeyDown(KeyCode.Q) && selected)
         {
-            if (qTimer >= qCD)
+            if (CheckQCD())
             {
-                qTimer = 0;
-                qActive = true;
-
-                navMeshAgent.speed = 20; // movespeed buff
-                attackDamage = 50; // attack buff
-                attackTimer = attackSpeed; //reset attack timer, like garen q
-                DamageNum.Create(transform.position, "Woof!", DamageNum.colors.pink); // buff message
+                UseQ();
             }
             else
             {
-                DamageNum.Create(transform.position, (qCD - qTimer).ToString("0.0") + "s left", DamageNum.colors.orange); // cooldown message
+                // cooldown message
+                DamageNum.Create(transform.position, (qCD - qTimer).ToString("0.0") + "s left", DamageNum.colors.orange); 
             }
 
         }
+    }
+
+    public override void UseQ()
+    {
+        qTimer = 0;
+        qActive = true;
+
+        navMeshAgent.speed = 20; // movespeed buff
+        attackDamage = 50; // attack buff
+        attackTimer = attackSpeed; //reset attack timer, like garen q
+        DamageNum.Create(transform.position, "Woof!", DamageNum.colors.pink); // buff message
     }
 }
