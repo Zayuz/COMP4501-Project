@@ -24,7 +24,6 @@ public class EnemyAI : MonoBehaviour
 
         if (inCombat)
         {
-
             //Pick most significant target to attack
             if (self.clickedUnit == null) {
                 float targetDist = 1000;
@@ -76,10 +75,6 @@ public class EnemyAI : MonoBehaviour
                     //self.clickedUnit = null;
                 }
             }
-
-            
-
-            
         }
         else
         {
