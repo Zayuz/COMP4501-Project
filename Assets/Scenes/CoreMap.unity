@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13040014, g: 0.09601523, b: 0.06181486, a: 1}
+  m_IndirectSpecularColor: {r: 0.13040084, g: 0.09601555, b: 0.06181498, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3583,8 +3583,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 996975696}
   - {fileID: 535568578}
+  - {fileID: 996975699}
   m_Father: {fileID: 877879795}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5421,6 +5421,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452391611}
   m_CullTransparentMesh: 1
+--- !u!1 &457656726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 996975696}
+  m_Layer: 0
+  m_Name: 'Recovery GameObject for Transform (ID in file: 996975696)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &464314012
 GameObject:
   m_ObjectHideFlags: 0
@@ -6672,7 +6688,7 @@ RectTransform:
   m_Children:
   - {fileID: 538817259}
   m_Father: {fileID: 327571913}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9521,7 +9537,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 20
   range: 20
-  defense: 0
+  defense: 10
   healthBar: {fileID: 622170295}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -13207,11 +13223,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
---- !u!1 &996975690 stripped
+--- !u!1 &996975690
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
   m_PrefabInstance: {fileID: 996975689}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 996975699}
+  - component: {fileID: 996975692}
+  - component: {fileID: 996975698}
+  - component: {fileID: 996975697}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!64 &996975692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13226,11 +13256,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3746554548866410089, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
---- !u!4 &996975696 stripped
+--- !u!4 &996975696
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b64ff1cc707aaf644b401eb31c9895c9, type: 3}
-  m_PrefabInstance: {fileID: 996975689}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457656726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &996975697
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13273,6 +13313,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!4 &996975699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996975690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 327571913}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1000435577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031339192871210686, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
@@ -15035,7 +15090,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 10
   range: 10
-  defense: 0
+  defense: 10
   healthBar: {fileID: 1586131009}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -16176,7 +16231,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 20
   range: 20
-  defense: 0
+  defense: 10
   healthBar: {fileID: 1491148836}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -19513,7 +19568,7 @@ MonoBehaviour:
   attackSpeed: 0
   attackDamage: 0
   range: 0
-  defense: 0
+  defense: 20
   healthBar: {fileID: 1996054756}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -22814,7 +22869,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 20
   range: 10
-  defense: 0
+  defense: 20
   healthBar: {fileID: 1445363836}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -24164,7 +24219,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 10
   range: 10
-  defense: 0
+  defense: 10
   healthBar: {fileID: 324452972}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -26685,7 +26740,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 20
   range: 10
-  defense: 0
+  defense: 20
   healthBar: {fileID: 2132644187}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}

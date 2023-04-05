@@ -117,8 +117,12 @@ public class Unit : Interactable
 
     public void TakeDamage(float damage)
     {
+        // calculate damage with defense taken into account
+        damage *= 1f - ((0.052f * defense) / (0.9f + 0.048f * defense));
+        damage = (float)Math.Ceiling(damage);
         currentHealth -= damage;
-        DamageNum.Create(transform.position, ((int)damage).ToString(), DamageNum.colors.orange);
+        DamageNum.Create(transform.position, ((int)(damage)).ToString(), DamageNum.colors.orange);
+        Debug.Log(damage);
 
         if (currentHealth <= 0 && maxHealth >= 0) 
         {
