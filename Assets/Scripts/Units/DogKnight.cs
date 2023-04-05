@@ -17,7 +17,6 @@ public class DogKnight : Hero
         if (qActive) { 
             qOngoing += Time.deltaTime; // how long has w been active for
             if (qOngoing >= qMaxDuration) { // buff wears off
-                //Debug.Log("BUFF OVER");
                 qActive = false;
                 qOngoing = 0;
 

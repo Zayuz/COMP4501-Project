@@ -5,13 +5,8 @@ using UnityEngine;
 
 public class Structure : Unit
 {
-    public enum StructureType {
-        Base,
-        Shield
-    }
-
     [Header("Structure Settings")]
-    public StructureType structureType;
+    public float regenAmount; 
 
     private float regenTimer;
 
@@ -30,10 +25,13 @@ public class Structure : Unit
 
         regenTimer -= Time.deltaTime;
 
-        if (regenTimer <= 0f)
+        if (regenTimer <= 0f && regenAmount > 0)
         {
-            currentHealth += 10;
-            currentHealth = (currentHealth > maxHealth) ? maxHealth : currentHealth;
+            if (currentHealth != maxHealth)
+            {
+                Heal(regenAmount);
+            }
+            
             regenTimer = 2.5f; // regenerate hp every 2.5 seconds
         }
     }

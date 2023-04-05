@@ -122,7 +122,6 @@ public class Unit : Interactable
         damage = (float)Math.Ceiling(damage);
         currentHealth -= damage;
         DamageNum.Create(transform.position, ((int)(damage)).ToString(), DamageNum.colors.orange);
-        Debug.Log(damage);
 
         if (currentHealth <= 0 && maxHealth >= 0) 
         {
