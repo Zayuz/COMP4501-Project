@@ -80,13 +80,126 @@ public class EnemyAI : MonoBehaviour
         {
             priority = 3;
             //Priority 3, seek nearby weak enemies
-            //Use collision sphere to determine enemies in range 40 and hunt them down if they are weak and we are strong
 
-            //Priority 4, acquire potions and summoning points
-            //No enemies in 40 range? Even enemies only and no resources? Stock up on things
+            //Use collision sphere to determine enemies in range 60 and hunt them down if they are weak and we are strong
+            float targetDist = 1000;
+            int layerMask = 1 << 8;
+            Collider[] hitColliders = Physics.OverlapSphere(transform.localPosition, 60f, layerMask);
+            foreach (var hitCollider in hitColliders)
+            {
+                Unit unit = hitCollider.GetComponent<Unit>();
+                if (unit != null)
+                {
+                    if (unit.team != self.team)
+                    {
+                        //Pick the closest to attack!
+                        float dist = Mathf.Sqrt(Mathf.Pow(unit.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(unit.transform.localPosition.z - transform.localPosition.z, 2));
+                        //If the enemy is under half health, hunt them down
+                        if (dist < targetDist && unit.currentHealth < unit.maxHealth / 2)
+                        {
+                            targetDist = dist;
+                            self.clickedUnit = unit;
+                        }
+                    }
+                }
+            }
 
-            //Priority 5, destroy enemy structures and strong enemies
+            //Priority 4, defend your half of the map if no enemies were found for hunting down
+            if (targetDist == 1000)
+            {
+                GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+                foreach (GameObject gameobj in units) {
+                    Unit unit = gameobj.GetComponent<Unit>();
+                    if (unit != null)
+                    {
+                        if (unit.team != self.team)
+                        {
+                            //Filter for units within the area (x < -20) to defend, then pick the closest
+                            float dist = Mathf.Sqrt(Mathf.Pow(unit.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(unit.transform.localPosition.z - transform.localPosition.z, 2));
+                            //If the enemy is under half health, hunt them down
+                            if (dist < targetDist && unit.transform.localPosition.x < -20)
+                            {
+                                priority = 4;
+                                targetDist = dist;
+                                self.clickedUnit = unit;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //Priority 5, acquire potions and summoning points
+            //No weak enemies in range? Even enemies only and no resources? Nothing to defend? Stock up on resources
+            if (targetDist == 1000)
+            {
+                bool needCrystal = false;
+                bool needPotion = false;
+                if (hero.CheckPotions() < 1)
+                {
+                    needPotion = true;
+                }
+                if (hero.CheckSummons() < 1)
+                {
+                    needCrystal = true;
+                }
+                //If you are not already stocked up on potions and crystals
+                if (needPotion || needCrystal)
+                {
+                    GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+                    //If health potions or summmoning crystals are available
+                    foreach (GameObject item in items)
+                    {
+                        Item.ItemType i = item.GetComponent<Item>().type;
+                        if (i == Item.ItemType.Potion && needPotion)
+                        {
+                            float dist = Mathf.Sqrt(Mathf.Pow(item.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(item.transform.localPosition.z - transform.localPosition.z, 2));
+                            if (dist < targetDist)
+                            {
+                                priority = 5;
+                                targetDist = dist;
+                                self.clickedItem = item.GetComponent<Item>();
+                                self.destination = item.transform.position;
+                            }
+                        }
+                        else if (i== Item.ItemType.Crystal && needCrystal)
+                        {
+                            float dist = Mathf.Sqrt(Mathf.Pow(item.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(item.transform.localPosition.z - transform.localPosition.z, 2));
+                            if (dist < targetDist)
+                            {
+                                priority = 5;
+                                targetDist = dist;
+                                self.clickedItem = item.GetComponent<Item>();
+                                self.destination = item.transform.position;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //Priority 6, destroy enemy structures and strong enemies
             //When all else fails, find enemies to be destroyed
+            if (targetDist == 1000)
+            {
+                GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+                foreach (GameObject gameobj in units)
+                {
+                    Unit unit = gameobj.GetComponent<Unit>();
+                    if (unit != null)
+                    {
+                        if (unit.team != self.team)
+                        {
+                            float dist = Mathf.Sqrt(Mathf.Pow(unit.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(unit.transform.localPosition.z - transform.localPosition.z, 2));
+                            if (dist < targetDist)
+                            {
+                                priority = 6;
+                                targetDist = dist;
+                                self.clickedUnit = unit;
+                                self.destination = unit.transform.position;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         //When in combat, use Q ability if able for additional power

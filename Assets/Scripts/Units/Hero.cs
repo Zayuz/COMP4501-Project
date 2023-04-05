@@ -94,6 +94,11 @@ public class Hero : Unit
         return potions;
     }
 
+    public int CheckSummons()
+    {
+        return summoningPoints;
+    }
+
     public void UsePotion()
     {
         Heal(100);

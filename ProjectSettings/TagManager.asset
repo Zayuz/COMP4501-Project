@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Unit
   - Flock1
+  - Item
   layers:
   - Default
   - TransparentFX

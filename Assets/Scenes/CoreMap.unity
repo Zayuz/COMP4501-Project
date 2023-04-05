@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13040014, g: 0.09601523, b: 0.06181486, a: 1}
+  m_IndirectSpecularColor: {r: 0.13040014, g: 0.096015215, b: 0.06181486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -445,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b836b0a0cf4469d4f89bab870c559463, type: 3}
       propertyPath: m_Name
       value: Potion 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b836b0a0cf4469d4f89bab870c559463, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: b836b0a0cf4469d4f89bab870c559463, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3179,6 +3183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012006197310, guid: 465c505844950da499dcf096a6da4409, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011695518034, guid: 465c505844950da499dcf096a6da4409, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4779,6 +4787,10 @@ PrefabInstance:
     - target: {fileID: 1000012006197310, guid: 465c505844950da499dcf096a6da4409, type: 3}
       propertyPath: m_Name
       value: Crystal 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012006197310, guid: 465c505844950da499dcf096a6da4409, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 4000011695518034, guid: 465c505844950da499dcf096a6da4409, type: 3}
       propertyPath: m_RootOrder
@@ -19847,6 +19859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion 2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b836b0a0cf4469d4f89bab870c559463, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: b836b0a0cf4469d4f89bab870c559463, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -23661,7 +23677,7 @@ NavMeshAgent:
   m_Speed: 10
   m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
