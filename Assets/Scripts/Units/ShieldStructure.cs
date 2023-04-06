@@ -21,7 +21,7 @@ public class ShieldStructure : Structure
         base.Update();
     }
 
-    new public void OnDestroy()
+    public void OnDestroy()
     {
         tree.defense -= defenseBuff;
     }

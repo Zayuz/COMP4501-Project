@@ -102,7 +102,7 @@ public class DragSelect : MonoBehaviour
             if (selectionBox.Contains(camera.WorldToScreenPoint(item.transform.position)))
             {
                 Unit unit = item.GetComponent<Unit>();
-                if (unit != null)
+                if (unit != null && unit.team == Interactable.teams.allied)
                 {
                     selected_table.addSelected(item.GetComponent<Unit>());
                 }

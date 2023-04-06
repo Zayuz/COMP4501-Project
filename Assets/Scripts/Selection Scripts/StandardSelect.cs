@@ -28,12 +28,12 @@ public class StandardSelect : MonoBehaviour
                 Unit unit = hit.transform.GetComponent<Unit>();
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    if(unit != null)
+                    if(unit != null && unit.team == Interactable.teams.allied)
                     {
                         selected_table.addSelected(unit);
                     }
                 }
-                else if (unit != null)
+                else if (unit != null && unit.team == Interactable.teams.allied)
                 {
                     selected_table.deselectAll();
                     selected_table.addSelected(unit);
@@ -60,7 +60,7 @@ public class StandardSelect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Unit unit = hit.transform.GetComponent<Unit>();
-        if (unit != null)
+        if (unit != null && unit.team == Interactable.teams.allied)
         {
             selected_table.addSelected(unit);
         }

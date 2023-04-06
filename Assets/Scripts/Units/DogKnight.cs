@@ -5,18 +5,25 @@ using UnityEngine.AI;
 
 public class DogKnight : Hero
 {
+    [Header("Dog Knight Settings")]
+    public float qMaxDuration; // max q buff should be active for
+
     private bool qActive = false;
     private float qOngoing = 0; // how long has q buff been active for
-    public float qMaxDuration; // max q buff should be active for
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+
         qTimer += Time.deltaTime; // time since last cast (for tracking cooldown)
-        if (qActive) { 
+
+        if (qActive) 
+        { 
             qOngoing += Time.deltaTime; // how long has w been active for
-            if (qOngoing >= qMaxDuration) { // buff wears off
+            
+            if (qOngoing >= qMaxDuration) 
+            { // buff wears off
                 qActive = false;
                 qOngoing = 0;
 
@@ -25,8 +32,6 @@ public class DogKnight : Hero
 
             }
         }
-
-
 
         if (Input.GetKeyDown(KeyCode.Q) && selected)
         {
