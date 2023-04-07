@@ -184,6 +184,7 @@ public class EnemyAI : MonoBehaviour
                 foreach (GameObject gameobj in units)
                 {
                     Unit unit = gameobj.GetComponent<Unit>();
+
                     if (unit != null)
                     {
                         if (unit.team != self.team)
@@ -217,12 +218,13 @@ public class EnemyAI : MonoBehaviour
         float targetDist = 100000;
         Unit self = GetComponent<Unit>();
         int layerMask = 1 << 8;
+        Unit unit = null;
         //Check all units on other teams to determine proximity
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.localPosition, 40f, layerMask);
         foreach (var hitCollider in hitColliders)
         {
-            Unit unit = hitCollider.GetComponent<Unit>();
+            unit = hitCollider.GetComponent<Unit>();
             if (unit != null)
             {
                 if (unit.team != self.team)
@@ -233,9 +235,11 @@ public class EnemyAI : MonoBehaviour
             }
         }
         
-        //Define in combat as in proximity to an enemy by 25 units
-        if (40f > targetDist && targetDist != 100000) {
+        //Define in combat as in proximity to an enemy by 40 units
+        if (40f > targetDist && targetDist != 100000 && unit.team != self.team) {
             inCombat = true;
+            self.clickedUnit = unit;
+            self.destination = unit.transform.position;
             EvaluateCombat();
         }
         else {
