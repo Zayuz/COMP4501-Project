@@ -8,10 +8,10 @@ public class DamageNum : MonoBehaviour
 {
     public enum colors
     {
-        orange, // dmg
+        orange, // ally dmg
+        red, // enemy dmg
         green, // healing
-        pink,
-        red // crits? not implemented yet
+        pink // system notifications
     } // popup text colors
 
     public Transform cam;

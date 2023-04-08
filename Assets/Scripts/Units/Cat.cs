@@ -20,7 +20,7 @@ public class Cat : Hero
             }
             else 
             {
-                DamageNum.Create(transform.position, (qCD-qTimer).ToString("0.0") + "s left", DamageNum.colors.orange); // cooldown message
+                DamageNum.Create(transform.position, (qCD-qTimer).ToString("0.0") + "s left", DamageNum.colors.pink); // cooldown message
             }
         }
     }

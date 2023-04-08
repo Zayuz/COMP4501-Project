@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class Unit : Interactable
 {
@@ -121,10 +122,36 @@ public class Unit : Interactable
         damage *= 1f - ((0.052f * defense) / (0.9f + 0.048f * defense));
         damage = (float)Math.Ceiling(damage);
         currentHealth -= damage;
-        DamageNum.Create(transform.position, ((int)(damage)).ToString(), DamageNum.colors.orange);
+
+        // Different colours for allied vs enemy damage for visibility
+        if (damage <= 0)
+        {
+            if (team == teams.allied)
+            {
+                DamageNum.Create(transform.position, ((int)(damage)).ToString(), DamageNum.colors.red);
+            }
+            else
+            {
+                DamageNum.Create(transform.position, ((int)(damage)).ToString(), DamageNum.colors.orange);
+            }
+        }
 
         if (currentHealth <= 0 && maxHealth >= 0) 
         {
+            if (this is TreeStructure)
+            {
+                if (team == teams.enemy)
+                {
+                    // win the game
+                    SceneManager.LoadScene("Victory");
+                }
+                else
+                {
+                    // lose the game
+                    SceneManager.LoadScene("Defeat");
+                }
+            }
+
             Destroy(gameObject);
             return;
         }
@@ -179,6 +206,17 @@ public class Unit : Interactable
                 {
                     animator.SetBool("isMoving", false);
                     animator.SetBool("isAttacking", true);
+                    animator.SetBool("isTakingDamage", false);
+                }
+            }
+            else if (targetDist > range)
+            {
+                destination = clickedUnit.transform.position;
+
+                if (animator != null)
+                {
+                    animator.SetBool("isMoving", true);
+                    animator.SetBool("isAttacking", false);
                     animator.SetBool("isTakingDamage", false);
                 }
             }

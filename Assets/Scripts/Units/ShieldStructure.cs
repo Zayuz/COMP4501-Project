@@ -12,7 +12,11 @@ public class ShieldStructure : Structure
     protected override void Start()
     {
         base.Start();
-        tree.defense += defenseBuff;
+
+        if (tree != null)
+        {
+            tree.defense += defenseBuff;
+        }
     }
 
     // Update is called once per frame
@@ -23,6 +27,9 @@ public class ShieldStructure : Structure
 
     public void OnDestroy()
     {
-        tree.defense -= defenseBuff;
+        if (tree != null)
+        {
+            tree.defense -= defenseBuff;
+        }
     }
 }

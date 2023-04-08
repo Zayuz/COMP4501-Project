@@ -6,13 +6,13 @@ using UnityEngine;
 public class Hero : Unit
 {
     public int moveSpeed;
+    public float qCD; // cooldown in seconds
+    public GameObject summon; // object to summon when using "summon" ability
 
     private int potions;
     private int summoningPoints;
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
-
     protected float qTimer; // timer for ability on q key
-    public float qCD; // cooldown in seconds
 
     // Start is called before the first frame update
     protected override void Start()
@@ -37,19 +37,25 @@ public class Hero : Unit
             PickUpItem();
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && potions > 0 && selected) { // use potion
+        if (Input.GetKeyDown(KeyCode.F) && selected) 
+        { // use potion
             if (currentHealth >= maxHealth)
             {
                 Debug.Log("Already at max health!");
             }
-            else {
+            else if (potions <= 0)
+            {
+                DamageNum.Create(transform.position, "Out of potions", DamageNum.colors.pink);
+            }
+            else 
+            {
                 UsePotion();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && selected)
-        { // take a point of damage, for testing animations and combat
-            TakeDamage(1.0f);
+        if (Input.GetKeyDown(KeyCode.E) && selected && summon != null)
+        {
+            Summon();
         }
 
         navMeshAgent.destination = destination;
@@ -104,5 +110,20 @@ public class Hero : Unit
         Heal(100);
         potions--;
         return;
+    }
+
+    public void Summon()
+    {
+        if (summoningPoints > 0)
+        {
+            float offset = 3f;
+            Vector3 position = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
+            Instantiate(summon, position, transform.rotation, transform).SetActive(true);
+            summoningPoints--;
+        }
+        else
+        {
+            DamageNum.Create(transform.position, "Out of summons", DamageNum.colors.pink);
+        }
     }
 }
