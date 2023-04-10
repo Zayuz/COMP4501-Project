@@ -9,6 +9,9 @@ public class Billboard : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (cam == null) {
+            cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        }
         transform.LookAt(transform.position + cam.forward);
     }
 }
