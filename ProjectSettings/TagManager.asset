@@ -8,6 +8,8 @@ TagManager:
   - Flock1
   - Item
   - Structure
+  - EnemyShield
+  - AlliedShield
   layers:
   - Default
   - TransparentFX
