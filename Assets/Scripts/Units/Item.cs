@@ -6,7 +6,8 @@ public class Item : Interactable
 {
     public enum ItemType {
         Potion,
-        Crystal
+        Crystal,
+        MegaMush
     }
 
     [Header("Item Settings")]
@@ -19,7 +20,9 @@ public class Item : Interactable
     // Start is called before the first frame update
     void Start()
     {
-
+        if (type == ItemType.MegaMush) {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -32,7 +35,9 @@ public class Item : Interactable
     {
         // Set item inactive and send to respawner
         GetOutline().enabled = false;
-        respawner.StartTimer(this.gameObject, respawnTime);
+        if (respawner != null) {
+            respawner.StartTimer(this.gameObject, respawnTime);
+        }
         gameObject.SetActive(false);
 
         return type;

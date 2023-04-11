@@ -81,6 +81,13 @@ public class Hero : Unit
                 myShield.summoningCrystals += 5;
                 DamageNum.Create(transform.position, "+5 Summoning Crystals!", DamageNum.colors.pink);
             }
+            else if (i == Item.ItemType.MegaMush)
+            {
+                Heal(maxHealth);
+                attackDamage *= 2;
+                attackSpeed /= 2;
+                defense *= 2;
+            }
 
             clickedItem = null;
         }

@@ -27,8 +27,8 @@ public class DogKnight : Hero
                 qActive = false;
                 qOngoing = 0;
 
-                navMeshAgent.speed = 10; // current default
-                attackDamage = 20; // current default
+                navMeshAgent.speed /= 2; // current default
+                attackDamage /= 2; // current default
 
             }
         }
@@ -53,8 +53,8 @@ public class DogKnight : Hero
         qTimer = 0;
         qActive = true;
 
-        navMeshAgent.speed = 20; // movespeed buff
-        attackDamage = 50; // attack buff
+        navMeshAgent.speed *= 2; // movespeed buff
+        attackDamage *= 2; // attack buff
         attackTimer = attackSpeed; //reset attack timer, like garen q
         DamageNum.Create(transform.position, "Woof!", DamageNum.colors.pink); // buff message
     }

@@ -12,6 +12,7 @@ TagManager:
   - AlliedShield
   - AlliedTree
   - EnemyTree
+  - MegaMush
   layers:
   - Default
   - TransparentFX
