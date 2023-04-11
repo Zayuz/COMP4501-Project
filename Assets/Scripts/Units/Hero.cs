@@ -13,6 +13,7 @@ public class Hero : Unit
     private int summoningPoints;
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
     protected float qTimer; // timer for ability on q key
+    public ShieldStructure myShield;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -53,10 +54,10 @@ public class Hero : Unit
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && selected && summon != null)
+        /*if (Input.GetKeyDown(KeyCode.E) && selected && summon != null)
         {
             Summon();
-        }
+        }*/
 
         navMeshAgent.destination = destination;
     }
@@ -77,8 +78,8 @@ public class Hero : Unit
             }
             else if (i == Item.ItemType.Crystal)
             {
-                summoningPoints++;
-                Debug.Log("Summoning Points: " + summoningPoints);
+                myShield.summoningCrystals += 5;
+                DamageNum.Create(transform.position, "+5 Summoning Crystals!", DamageNum.colors.pink);
             }
 
             clickedItem = null;

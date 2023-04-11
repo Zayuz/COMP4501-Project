@@ -11,6 +11,7 @@ public class ShieldStructure : Structure
     private float summonTimer;
     public GameObject summon;
     public float offset;
+    public int summoningCrystals;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -21,7 +22,7 @@ public class ShieldStructure : Structure
             tree.defense += defenseBuff;
         }
 
-        summonTimer = 10f;
+        summonTimer = 0f;
     }
 
     // Update is called once per frame
@@ -31,11 +32,15 @@ public class ShieldStructure : Structure
 
         summonTimer -= Time.deltaTime;
 
-        if (summonTimer <= 0f)
+        if (summonTimer <= 0f && summoningCrystals>0)
         {
             spawnMinion();
 
             summonTimer = 10f; // summon minion every 10 seconds
+            summoningCrystals--;
+            if (summoningCrystals <= 0) {
+                DamageNum.Create(transform.position, "Out of summoning crystals!", DamageNum.colors.red);
+            }
         }
     }
 
