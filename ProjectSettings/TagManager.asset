@@ -10,6 +10,8 @@ TagManager:
   - Structure
   - EnemyShield
   - AlliedShield
+  - AlliedTree
+  - EnemyTree
   layers:
   - Default
   - TransparentFX

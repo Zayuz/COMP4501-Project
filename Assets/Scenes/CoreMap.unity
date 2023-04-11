@@ -17240,6 +17240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ally Shield
       objectReference: {fileID: 0}
+    - target: {fileID: 3426307462692932070, guid: 9f7eca4153bb0c947b900cbadeccd25e, type: 3}
+      propertyPath: m_TagString
+      value: AlliedShield
+      objectReference: {fileID: 0}
     - target: {fileID: 3426307462737312671, guid: 9f7eca4153bb0c947b900cbadeccd25e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17389,6 +17393,10 @@ PrefabInstance:
     - target: {fileID: 4302077618437352253, guid: 43ef6b7007cf2d44ea9c5ae9b157e07f, type: 3}
       propertyPath: m_Name
       value: Enemy Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302077618437352253, guid: 43ef6b7007cf2d44ea9c5ae9b157e07f, type: 3}
+      propertyPath: m_TagString
+      value: EnemyTree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43ef6b7007cf2d44ea9c5ae9b157e07f, type: 3}
@@ -17543,6 +17551,10 @@ PrefabInstance:
     - target: {fileID: 5223294060938322729, guid: 7e7a613c67ed51845bd3032504de33c7, type: 3}
       propertyPath: m_Name
       value: Ally Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223294060938322729, guid: 7e7a613c67ed51845bd3032504de33c7, type: 3}
+      propertyPath: m_TagString
+      value: AlliedTree
       objectReference: {fileID: 0}
     - target: {fileID: 5223294061517423764, guid: 7e7a613c67ed51845bd3032504de33c7, type: 3}
       propertyPath: cam

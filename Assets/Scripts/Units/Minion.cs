@@ -5,19 +5,23 @@ using UnityEngine;
 
 public class Minion : Unit
 {
+    public int moveSpeed;
+    protected UnityEngine.AI.NavMeshAgent navMeshAgent;
     // Start is called before the first frame update
     new protected virtual void Start()
     {
         base.Start();
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.angularSpeed = moveSpeed;
         GameObject dest = null;
 
         // default clicked object is the enemy shield, hopefully will move to attack
         if (team == teams.allied)
         {
-            dest = GameObject.FindGameObjectWithTag("EnemyShield");
+            dest = GameObject.FindGameObjectWithTag("EnemyTree");
         }
         else if (team == teams.enemy) {
-            dest = GameObject.FindGameObjectWithTag("AlliedShield");
+            dest = GameObject.FindGameObjectWithTag("AlliedTree");
         }
 
         if (dest != null)
@@ -42,7 +46,10 @@ public class Minion : Unit
     {
         // TODO: Make summons have different behaviour from units
         base.Update();
-        if (attackTimer == 0) { // attacks once then dies, will attack enemy tree
+
+        navMeshAgent.destination = destination;
+        if (attackTimer == 0)
+        { // attacks once then dies, will attack enemy tree
             Destroy(gameObject);
         }
     }
