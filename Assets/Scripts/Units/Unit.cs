@@ -124,7 +124,7 @@ public class Unit : Interactable
         currentHealth -= damage;
 
         // Different colours for allied vs enemy damage for visibility
-        if (damage <= 0)
+        if (damage >= 0)
         {
             if (team == teams.allied)
             {

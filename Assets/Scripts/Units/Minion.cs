@@ -4,7 +4,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Minion : Unit
-{
+{   
     public int moveSpeed;
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
     // Start is called before the first frame update
