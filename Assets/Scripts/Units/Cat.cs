@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class Cat : Hero
 {
+    protected override void Start()
+    {
+        base.Start();
+
+        if (team == teams.allied)
+        {
+            respawner = GameObject.Find("GamblerCatRspwn").GetComponent<HeroRespawner>();
+        }
+        else
+        {
+            respawner = GameObject.Find("EnemyGamblerCatRspwn").GetComponent<HeroRespawner>();
+        }
+
+        if (respawner != null)
+        {
+            respawner.SetRespawnPosition(transform.position);
+        }
+    }
     // Update is called once per frame
     
     protected override void Update()

@@ -182,7 +182,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588311596750658699}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -87.05, y: 15, z: 29.04}
   m_LocalScale: {x: 3.53, y: 3.53, z: 3.53}
   m_ConstrainProportionsScale: 1
@@ -277,7 +277,6 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 30
   qCD: 5
-  summon: {fileID: 0}
   healPotency: 20
   healRange: 20
 --- !u!95 &588311596750658700

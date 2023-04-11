@@ -32,13 +32,14 @@ public class ShieldStructure : Structure
 
         summonTimer -= Time.deltaTime;
 
-        if (summonTimer <= 0f && summoningCrystals>0)
+        if (summonTimer <= 0f && summoningCrystals > 0)
         {
             spawnMinion();
-
             summonTimer = 10f; // summon minion every 10 seconds
             summoningCrystals--;
-            if (summoningCrystals <= 0) {
+            
+            if (summoningCrystals <= 0) 
+            {
                 DamageNum.Create(transform.position, "Out of summoning crystals!", DamageNum.colors.red);
             }
         }
@@ -57,7 +58,11 @@ public class ShieldStructure : Structure
         Debug.Log("Spawning Minion!");
         Vector3 position = new Vector3(transform.position.x, transform.position.y - 14f, transform.position.z - offset);
         Instantiate(summon, position, transform.rotation, transform).SetActive(true);
+    }
 
+    public int GetCrystals()
+    {
+        return summoningCrystals;
     }
 }
 

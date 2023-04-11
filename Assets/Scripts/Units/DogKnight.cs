@@ -11,6 +11,25 @@ public class DogKnight : Hero
     private bool qActive = false;
     private float qOngoing = 0; // how long has q buff been active for
 
+    protected override void Start()
+    {
+        base.Start();
+
+        if (team == teams.allied)
+        {
+            respawner = GameObject.Find("DogKnightRspwn").GetComponent<HeroRespawner>();
+        }
+        else
+        {
+            respawner = GameObject.Find("EnemyDogKnightRspwn").GetComponent<HeroRespawner>();
+        }
+
+        if (respawner != null)
+        {
+            respawner.SetRespawnPosition(transform.position);
+        }
+    }
+
     // Update is called once per frame
     protected override void Update()
     {

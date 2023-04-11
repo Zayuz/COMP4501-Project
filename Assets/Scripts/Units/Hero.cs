@@ -7,13 +7,13 @@ public class Hero : Unit
 {
     public int moveSpeed;
     public float qCD; // cooldown in seconds
-    public GameObject summon; // object to summon when using "summon" ability
-
-    private int potions;
-    private int summoningPoints;
-    protected UnityEngine.AI.NavMeshAgent navMeshAgent;
-    protected float qTimer; // timer for ability on q key
     public ShieldStructure myShield;
+
+    protected int potions;
+    protected int summoningPoints;
+    protected UnityEngine.AI.NavMeshAgent navMeshAgent;
+    protected HeroRespawner respawner;
+    protected float qTimer; // timer for ability on q key
 
     // Start is called before the first frame update
     protected override void Start()
@@ -21,11 +21,19 @@ public class Hero : Unit
         base.Start();
         qTimer = qCD; // abilities available from the start
         potions = 0;
-        summoningPoints = 0;
 
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.angularSpeed = moveSpeed;
         destination = transform.position;
+
+        if (team == teams.allied)
+        {
+            myShield = GameObject.Find("Ally Shield").GetComponent<ShieldStructure>();
+        }
+        else
+        {
+            myShield = GameObject.Find("Enemy Shield").GetComponent<ShieldStructure>();
+        }
     }
 
     // Update is called once per frame
@@ -53,13 +61,23 @@ public class Hero : Unit
                 UsePotion();
             }
         }
-
-        /*if (Input.GetKeyDown(KeyCode.E) && selected && summon != null)
+        
+        if (navMeshAgent == null)
         {
-            Summon();
-        }*/
+            navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        }
+        else
+        {
+            navMeshAgent.destination = destination;
+        }
+    }
 
-        navMeshAgent.destination = destination;
+    void OnDestroy()
+    {
+        if (respawner != null)
+        {
+            respawner.StartTimer();
+        }
     }
 
     void PickUpItem()
@@ -108,30 +126,10 @@ public class Hero : Unit
         return potions;
     }
 
-    public int CheckSummons()
-    {
-        return summoningPoints;
-    }
-
     public void UsePotion()
     {
         Heal(100);
         potions--;
         return;
-    }
-
-    public void Summon()
-    {
-        if (summoningPoints > 0)
-        {
-            float offset = 3f;
-            Vector3 position = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
-            Instantiate(summon, position, transform.rotation, transform).SetActive(true);
-            summoningPoints--;
-        }
-        else
-        {
-            DamageNum.Create(transform.position, "Out of summons", DamageNum.colors.pink);
-        }
     }
 }

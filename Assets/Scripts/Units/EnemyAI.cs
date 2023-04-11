@@ -134,14 +134,17 @@ public class EnemyAI : MonoBehaviour
             {
                 bool needCrystal = false;
                 bool needPotion = false;
+                
                 if (hero.CheckPotions() < 1)
                 {
                     needPotion = true;
                 }
-                if (hero.CheckSummons() < 1)
+
+                if (hero.myShield.GetCrystals() < 1)
                 {
                     needCrystal = true;
                 }
+
                 //If you are not already stocked up on potions and crystals
                 if (needPotion || needCrystal)
                 {
@@ -149,27 +152,31 @@ public class EnemyAI : MonoBehaviour
                     //If health potions or summmoning crystals are available
                     foreach (GameObject item in items)
                     {
-                        Item.ItemType i = item.GetComponent<Item>().type;
-                        if (i == Item.ItemType.Potion && needPotion)
+                        if (item.active)
                         {
-                            float dist = Mathf.Sqrt(Mathf.Pow(item.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(item.transform.localPosition.z - transform.localPosition.z, 2));
-                            if (dist < targetDist)
+                            Item.ItemType i = item.GetComponent<Item>().type;
+
+                            if (i == Item.ItemType.Potion && needPotion)
                             {
-                                priority = 5;
-                                targetDist = dist;
-                                self.clickedItem = item.GetComponent<Item>();
-                                self.destination = item.transform.position;
+                                float dist = Mathf.Sqrt(Mathf.Pow(item.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(item.transform.localPosition.z - transform.localPosition.z, 2));
+                                if (dist < targetDist)
+                                {
+                                    priority = 5;
+                                    targetDist = dist;
+                                    self.clickedItem = item.GetComponent<Item>();
+                                    self.destination = item.transform.position;
+                                }
                             }
-                        }
-                        else if (i== Item.ItemType.Crystal && needCrystal)
-                        {
-                            float dist = Mathf.Sqrt(Mathf.Pow(item.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(item.transform.localPosition.z - transform.localPosition.z, 2));
-                            if (dist < targetDist)
+                            else if (i== Item.ItemType.Crystal && needCrystal)
                             {
-                                priority = 5;
-                                targetDist = dist;
-                                self.clickedItem = item.GetComponent<Item>();
-                                self.destination = item.transform.position;
+                                float dist = Mathf.Sqrt(Mathf.Pow(item.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow(item.transform.localPosition.z - transform.localPosition.z, 2));
+                                if (dist < targetDist)
+                                {
+                                    priority = 5;
+                                    targetDist = dist;
+                                    self.clickedItem = item.GetComponent<Item>();
+                                    self.destination = item.transform.position;
+                                }
                             }
                         }
                     }
@@ -181,6 +188,7 @@ public class EnemyAI : MonoBehaviour
             if (targetDist == 1000)
             {
                 GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+                
                 foreach (GameObject gameobj in units)
                 {
                     Unit unit = gameobj.GetComponent<Unit>();
@@ -235,16 +243,19 @@ public class EnemyAI : MonoBehaviour
             }
         }
         
-        //Define in combat as in proximity to an enemy by 40 units
-        if (40f > targetDist && targetDist != 100000 && unit.team != self.team) {
-            inCombat = true;
-            self.clickedUnit = unit;
-            self.destination = unit.transform.position;
-            EvaluateCombat();
-        }
-        else {
-            inCombat = false;
-            self.clickedUnit = null;
+        if (unit != null)
+        {
+            //Define in combat as in proximity to an enemy by 40 units
+            if (40f > targetDist && targetDist != 100000 && unit.team != self.team) {
+                inCombat = true;
+                self.clickedUnit = unit;
+                self.destination = unit.transform.position;
+                EvaluateCombat();
+            }
+            else {
+                inCombat = false;
+                self.clickedUnit = null;
+            }
         }
     }
 
