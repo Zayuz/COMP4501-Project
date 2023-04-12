@@ -20,7 +20,7 @@ Damage Numbers and Text Pop-ups - https://www.youtube.com/watch?v=iD1_JczQcFY
 Blender (https://www.blender.org/download/) is required to compile and run the project  
 
 # Controls
-Camera Movement - WASD keys or mouse movement to control the camera.  
+Camera Movement - Use the WASD keys or mouse movement to control the camera. Holding SHIFT will speed up the camera movement.  
 Unit Selection - Left click on an allied unit or hold left click and drag over multiple allied units to select.  
 Unit De-selection - Left click on an allied unit to deselect all units except the clicked unit, left click on something other than an allied unit (EX: terrain) to deselect all units.  
 Unit Movement - Right click on terrain with allied unit(s) selected to command them to move to the right-clicked point.  
