@@ -31,7 +31,8 @@ Blink/Teleport - For the Cat Hero, when selected press Q to teleport to the loca
 Speed/Damage buff - For the Dog Knight Hero, when selected press Q to increase speed and damage for 3 seconds. This ability has a cooldown.  
 Heal - For the Wizard hero, when selected press Q on self or an ally to heal them in a burst. This ability has a cooldown.  
 
-# Gameplay
+# Gameplay  
+To start the game, load the 'MainMenu' scene. For testing, you can just load the 'CoreMap' scene.  
 To win the game, destroy the enemy tree. You will lose if your tree is destroyed, so protect it at all costs.  
 The runic shield stones increase the defense of their teams' tree. If it is killed, the tree will become weaker.  
 The shields also spawn wisps when you have enough summoning crystals. These wisps will attack the enemy tree, but can be intercepted and killed before they reach the tree.  
