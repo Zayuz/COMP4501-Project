@@ -1935,6 +1935,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &242158988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2831,6 +2832,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &369214066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4513,6 +4515,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &540508787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7396,6 +7399,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &869278196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8198,6 +8202,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &951330925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10386,6 +10391,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &1291928054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11130,6 +11136,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &1437223205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11711,6 +11718,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &1482924495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14087,6 +14095,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &1778632798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15657,6 +15666,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
+  myShield: {fileID: 0}
 --- !u!114 &1984586735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17645,7 +17655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3426307462692932070, guid: 9f7eca4153bb0c947b900cbadeccd25e, type: 3}
       propertyPath: m_TagString
-      value: AlliedShield
+      value: Unit
       objectReference: {fileID: 0}
     - target: {fileID: 3426307462737312671, guid: 9f7eca4153bb0c947b900cbadeccd25e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -17803,7 +17813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4302077618437352253, guid: 43ef6b7007cf2d44ea9c5ae9b157e07f, type: 3}
       propertyPath: m_TagString
-      value: EnemyTree
+      value: Unit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43ef6b7007cf2d44ea9c5ae9b157e07f, type: 3}
@@ -17965,7 +17975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223294060938322729, guid: 7e7a613c67ed51845bd3032504de33c7, type: 3}
       propertyPath: m_TagString
-      value: AlliedTree
+      value: Unit
       objectReference: {fileID: 0}
     - target: {fileID: 5223294061517423764, guid: 7e7a613c67ed51845bd3032504de33c7, type: 3}
       propertyPath: cam
@@ -18350,7 +18360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222530644616136326, guid: d5801108640d23d4dbf907a263e45f4d, type: 3}
       propertyPath: m_TagString
-      value: EnemyShield
+      value: Unit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5801108640d23d4dbf907a263e45f4d, type: 3}

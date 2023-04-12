@@ -8,10 +8,12 @@ public class ShieldStructure : Structure
 {
     public Structure tree; // tree to buff defense of
     public int defenseBuff; // what to buff tree defense by
-    private float summonTimer;
     public GameObject summon;
     public float offset;
     public int summoningCrystals;
+
+    private float summonTimer;
+
     // Start is called before the first frame update
     protected override void Start()
     {

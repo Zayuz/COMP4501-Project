@@ -18,10 +18,10 @@ public class Minion : Unit
         // default clicked object is the enemy shield, hopefully will move to attack
         if (team == teams.allied)
         {
-            dest = GameObject.FindGameObjectWithTag("EnemyTree");
+            dest = GameObject.Find("Enemy Tree");
         }
         else if (team == teams.enemy) {
-            dest = GameObject.FindGameObjectWithTag("AlliedTree");
+            dest = GameObject.Find("Ally Tree");
         }
 
         if (dest != null)
@@ -48,7 +48,7 @@ public class Minion : Unit
         base.Update();
 
         navMeshAgent.destination = destination;
-        if (attackTimer == 0)
+        if (attackTimer <= 0)
         { // attacks once then dies, will attack enemy tree
             Destroy(gameObject);
         }
