@@ -50,7 +50,8 @@ public class Hero : Unit
         { // use potion
             if (currentHealth >= maxHealth)
             {
-                Debug.Log("Already at max health!");
+                //Debug.Log("Already at max health!");
+                DamageNum.Create(transform.position, "Already at max health!", DamageNum.colors.red);
             }
             else if (potions <= 0)
             {
@@ -92,7 +93,8 @@ public class Hero : Unit
             if (i == Item.ItemType.Potion)
             {
                 potions++;
-                Debug.Log("Potions: " + potions);
+                //Debug.Log("Potions: " + potions);
+                DamageNum.Create(transform.position, "+1 Potion!", DamageNum.colors.green);
             }
             else if (i == Item.ItemType.Crystal)
             {
@@ -105,6 +107,7 @@ public class Hero : Unit
                 attackDamage *= 2;
                 attackSpeed /= 2;
                 defense *= 2;
+                DamageNum.Create(transform.position, "Powered up!", DamageNum.colors.pink);
             }
 
             clickedItem = null;

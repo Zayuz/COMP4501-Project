@@ -57,7 +57,7 @@ public class ShieldStructure : Structure
 
     public void spawnMinion()
     {
-        Debug.Log("Spawning Minion!");
+        //Debug.Log("Spawning Minion!");
         Vector3 position = new Vector3(transform.position.x, transform.position.y - 14f, transform.position.z - offset);
         Instantiate(summon, position, transform.rotation, transform).SetActive(true);
     }
