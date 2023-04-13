@@ -588,14 +588,14 @@ MonoBehaviour:
   maxHealth: 1
   currentHealth: 0
   attackSpeed: 2
-  attackDamage: 5
+  attackDamage: 30
   range: 10
   defense: 10
   healthBar: {fileID: 956518865}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
   clickedItem: {fileID: 0}
-  moveSpeed: 0
+  moveSpeed: 10
 --- !u!195 &5949503791738519057
 NavMeshAgent:
   m_ObjectHideFlags: 0

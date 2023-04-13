@@ -461,10 +461,11 @@ GameObject:
   - component: {fileID: 5255033823852618170}
   - component: {fileID: 5255033823852618171}
   - component: {fileID: 5255033823852618168}
-  - component: {fileID: 451286066}
   - component: {fileID: 451286065}
+  - component: {fileID: 8163303723059317972}
+  - component: {fileID: 3820015669948810010}
   m_Layer: 0
-  m_Name: Summon
+  m_Name: alliedMinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,8 +479,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405224075663247806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1588143533}
@@ -514,7 +515,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5ca2f17b76c903840b455a5bc974f62b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -549,33 +550,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &451286066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405224075663247806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f342638a49da4e64ab0101aa2cc863e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 1
-  outline: {fileID: 451286065}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  maxHealth: 100
-  currentHealth: 0
-  attackSpeed: 2
-  attackDamage: 10
-  range: 10
-  defense: 10
-  healthBar: {fileID: 956518865}
-  destination: {x: 0, y: 0, z: 0}
-  clickedUnit: {fileID: 0}
-  clickedItem: {fileID: 0}
 --- !u!114 &451286065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,3 +568,53 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8163303723059317972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405224075663247806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d1db7dfaf771b4a81e9fb279189b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
+  outline: {fileID: 451286065}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  maxHealth: 1
+  currentHealth: 0
+  attackSpeed: 2
+  attackDamage: 30
+  range: 10
+  defense: 10
+  healthBar: {fileID: 956518865}
+  destination: {x: 0, y: 0, z: 0}
+  clickedUnit: {fileID: 0}
+  clickedItem: {fileID: 0}
+  moveSpeed: 10
+--- !u!195 &3820015669948810010
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405224075663247806}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.58
+  m_Speed: 10
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.79
+  m_BaseOffset: 0.41
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

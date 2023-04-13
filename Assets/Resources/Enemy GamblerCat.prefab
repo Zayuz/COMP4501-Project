@@ -113,7 +113,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  maxHealth: 100
+  maxHealth: 175
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 10
@@ -125,7 +125,7 @@ MonoBehaviour:
   clickedItem: {fileID: 0}
   moveSpeed: 40
   qCD: 3
-  summon: {fileID: 0}
+  myShield: {fileID: 0}
 --- !u!95 &6563059598595229046
 Animator:
   serializedVersion: 5

@@ -145,19 +145,19 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  maxHealth: 100
+  maxHealth: 200
   currentHealth: 0
   attackSpeed: 1
   attackDamage: 20
   range: 10
-  defense: 20
+  defense: 15
   healthBar: {fileID: 3970071321904310428}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
   clickedItem: {fileID: 0}
   moveSpeed: 10
   qCD: 10
-  summon: {fileID: 0}
+  myShield: {fileID: 0}
   qMaxDuration: 3
 --- !u!1 &3970071321052938883
 GameObject:

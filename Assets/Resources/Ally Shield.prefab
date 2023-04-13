@@ -329,7 +329,7 @@ MonoBehaviour:
   attackSpeed: 0
   attackDamage: 0
   range: 0
-  defense: 10
+  defense: 0
   healthBar: {fileID: 3426307463138506329}
   destination: {x: 0, y: 0, z: 0}
   clickedUnit: {fileID: 0}
@@ -337,6 +337,9 @@ MonoBehaviour:
   regenAmount: 5
   tree: {fileID: 0}
   defenseBuff: 20
+  summon: {fileID: 0}
+  offset: 0
+  summoningCrystals: 0
 --- !u!65 &3426307462692932058
 BoxCollider:
   m_ObjectHideFlags: 0
